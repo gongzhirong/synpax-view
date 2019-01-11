@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes: [
     {
@@ -25,6 +25,21 @@ export default new Router({
       path: '/finish',
       name: 'finish',
       component: () => import ('./views/finish.vue')
+    },
+    {
+      path: '/selectBag',
+      name: 'selectBag',
+      component: () => import ('./views/selectBag.vue')
+    },
+    {
+      path: '/configureBags',
+      name: 'configureBags',
+      component: () => import ('./views/configureBags.vue')
+    },
+    {
+      path: '/addToCar',
+      name: 'addToCar',
+      component: () => import ('./views/addToCar.vue')
     }
   ]
 })

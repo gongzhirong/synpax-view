@@ -18,6 +18,9 @@ export default {
   },
   components: {
     PackageSteps
+  },
+  created () {
+    this.$store.dispatch('changeSteps', 'finish')
   }
 }
 </script>
