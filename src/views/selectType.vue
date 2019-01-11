@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import PackageSteps from '../components/packageSteps'
+import PackageSteps from '../components/packageSteps.vue'
 export default {
   data () {
     return {}

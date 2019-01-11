@@ -2,11 +2,7 @@
   <div class="packageSet">
     <div class="header">
       <ul class="stepsBox">
-        <li :class="{active: packageSetSteps === 'selectType'}">1.选择类型</li>
-        <li>2.选择袋子</li>
-        <li>3.配置袋子</li>
-        <li>4.加入购物车</li>
-        <li>5.完成包装配置</li>
+        <li v-for="(name, type, index) in stepList" :class="{active: packageSetSteps === type}">{{`${++index}.${name}`}}</li>
       </ul>
     </div>
   </div>
@@ -15,7 +11,15 @@
 export default {
   name: 'packageSet',
   data () {
-    return {}
+    return {
+      stepList: {
+        selectType: '选择类型',
+        selectBag: '选择袋子',
+        configureBags: '配置袋子',
+        addToCar: '加入购物车',
+        finish: '完成包装配置'
+      }
+    }
   },
   computed: {
     packageSetSteps () {
