@@ -9,9 +9,6 @@ export default {
     }
   },
   methods: {
-    scrollToTop () {
-      window.scrollTo(0, 0)
-    },
     resetScreenSzie () {
       this.$store.dispatch('resetScreenSzie')
       window.onresize = _ => {
