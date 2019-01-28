@@ -2,6 +2,7 @@
   <div class="configureBags">
     <PackageSteps />
     <h1>配置袋子</h1>
+    <md-table></md-table>
   </div>
 </template>
 <script>
