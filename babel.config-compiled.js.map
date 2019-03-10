@@ -1,0 +1,1 @@
+{"version":3,"sources":["babel.config.js"],"names":[],"mappings":"AAAA,OAAO,OAAP,GAAiB;AACf,WAAS,CACP,UADO;AADM,CAAjB","file":"babel.config-compiled.js","sourcesContent":["module.exports = {\r\n  presets: [\r\n    '@vue/app'\r\n  ]\r\n}\r\n"]}

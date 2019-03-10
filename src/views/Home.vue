@@ -16,11 +16,23 @@
           <div class="home_tabber">
               <div class="home_title">
                   <div class="title_line"></div>
-                  <div class="title_text">包装配置器</div>
+                  <div class="title_text">开始我的包装</div>
                   <div class="title_line"></div>
               </div>
               <p class="home_text">通过简单的操作选出最适合你的包装产品</p>
               <div class="tabber_content">
+                  <div class="tabber_goods" @click="selectType">
+                      <img src="../assets/images/home/tabber_1.jpg" class="tabber_img">
+                  </div>
+                  <div class="tabber_goods" @click="selectType">
+                      <img src="../assets/images/home/tabber_2.jpg" class="tabber_img">
+                  </div>
+                  <div class="tabber_goods" @click="selectType">
+                      <img src="../assets/images/home/tabber_3.jpg" class="tabber_img">
+                  </div>
+                  <div class="tabber_goods" @click="selectType">
+                      <img src="../assets/images/home/tabber_4.png" class="tabber_img">
+                  </div>
               </div>
           </div>
           <div class="home_detail">
@@ -32,7 +44,54 @@
               <p class="home_text">FAILURE IS PROBABLY THE FORTIFICATION IN YOUR POLE. IT IS LIKE A PEEK YOUR WALLET AS
                   THE THIEF, <br>WHEN YOU ARE THINKING HOW TO SPEND SEVERAL HARD-</p>
               <div class="detail_wrap">
+                  <div class="detai_type_1">
+                      <div class="type_1_1">
+                          <img src="../assets/img/type_1_1.png" class="type_img">
+                      </div>
+                      <div class="type_1_2">
+                          <img src="../assets/img/type_7.jpg" class="type_img wh100">
+                      </div>
+                      <div class="type_1_3">
+                          <img src="../assets/img/type_1_2.png" class="type_img">
+                      </div>
+                  </div>
+                  <div class="detai_type_2">
+                      <div class="type_2_1">
+                          <img src="../assets/img/type_2_1.png" class="type_img">
+                      </div>
+                      <div class="type_2_2">
+                          <!--<div class="type_2_2_left"></div>-->
+                          <!--<div class="type_2_2_right"></div>-->
+                          <img src="../assets/img/type_6.jpg" class="type_img wh100">
+                      </div>
+                      <div class="type_2_3">
+                          <img src="../assets/img/type_2_2.png" class="type_img">
+                      </div>
+                      <div class="type_2_4">
+                          <img src="../assets/img/type_8.jpg" class="type_img wh100">
+                      </div>
+                      <div class="type_2_5">
+                          <img src="../assets/img/type_2_3.png" class="type_img">
+                      </div>
+                  </div>
+                  <div class="detai_type_3">
+                      <div class="type_3_1">
+                          <img src="../assets/img/type_5.jpg" class="type_img wh100">
+                      </div>
+                      <div class="type_3_2">
+                          <img src="../assets/img/type_3_1.png" class="type_img">
+                      </div>
+                      <div class="type_3_3">
+                          <img src="../assets/img/type_3_2.png" class="type_img">
+                      </div>
+                      <div class="type_3_4">
+                          <img src="../assets/img/type_9.jpg" class="type_img wh100">
+                      </div>
+                  </div>
               </div>
+          </div>
+          <div class="home_about">
+              <img src="../assets/img/about.png">
           </div>
       </div>
       <!-- 公共底部 -->
@@ -50,6 +109,7 @@
                   <p class="contact_left">留言</p>
                   <textarea cols="30" rows="10" class="contact_right contact_textarea"></textarea>
               </div>
+              <button class="sendBtn">发送</button>
           </div>
           <div class="footer_arrow" @click="scrollToTop"></div>
       </div>
@@ -62,12 +122,16 @@ export default {
   methods: {
     scrollToTop () {
       window.scrollTo(0, 0)
+    },
+    selectType () {
+        this.$router.push({path: '/selectType'});
     }
   }
 }
 </script>
 <style lang="less">
 .home {
+    background-color: #ececec;
   .home_banner {
     width: 100%;
     height: 744px;
@@ -184,7 +248,24 @@ export default {
   .tabber_content {
       width: 1210px;
       overflow: hidden;
-      margin: 30px auto 0;
+      margin: 50px auto 100px;
+  }
+  .tabber_goods {
+      width: 600px;
+      height: 253px;
+      background-color: #fff;
+      display: inline-block;
+      margin: 0 10px 10px 0;
+  }
+  .tabber_goods:nth-child(2) {
+      margin-right: 0;
+  }
+  .tabber_goods:last-child {
+      margin-right: 0;
+  }
+  .tabber_img {
+      height: 100%;
+      width: 100%;
   }
 
   .home_shower {
@@ -200,6 +281,247 @@ export default {
       overflow: hidden;
       position: relative;
   }
+    .detail_wrap {
+        width: 1640px;
+        margin-top: 48px;
+        overflow: hidden;
+    }
+
+    .type_img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        -moz-transition: transform 0.2s linear;
+        -webkit-transition: transform 0.2s linear;
+        -o-transition: transform 0.2s linear;
+        transition: transform 0.2s linear;
+    }
+
+    .wh100 {
+        height: 100%;
+        width: 100%;
+    }
+
+    .type_1_1:hover .type_img,.type_1_3:hover .type_img, .type_2_1:hover .type_img, .type_2_3:hover .type_img,.type_2_5:hover .type_img, .type_3_2:hover .type_img, .type_3_3:hover .type_img {
+        -moz-transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+    .detai_type_1 {
+        width: 540px;
+        /*height: 1148px;*/
+        float: left;
+        margin-right: 10px;
+    }
+
+    .type_1_1 {
+        width: 540px;
+        height: 797px;
+        margin-bottom: 10px;
+        position: relative;
+        background-color: #fff;
+    }
+
+    .type_1_2 {
+        width: 540px;
+        height: 331px;
+        margin-bottom: 10px;
+        position: relative;
+        background-color: #0b0506;
+        z-index: 1;
+    }
+
+    .type_1_3 {
+        width: 540px;
+        height: 797px;
+        margin-bottom: 10px;
+        position: relative;
+        background-color: #fff;
+        background-image: url("../assets/img/type_12.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .type_1_2:before {
+        display: block;
+        position: absolute;
+        width: 48px;
+        height: 43px;
+        background: url(../assets/img/type_up.png) no-repeat;
+        top: -53px;
+        left: 50%;
+        margin-left: -24px;
+        content: ' ';
+    }
+
+    .detai_type_2 {
+        width: 540px;
+        /*height: 1148px;*/
+        float: left;
+        margin-right: 10px;
+    }
+
+    .type_2_1 {
+        width: 540px;
+        height: 402px;
+        margin-bottom: 10px;
+        position: relative;
+        background-color: #fff;
+    }
+
+    .type_2_2 {
+        width: 540px;
+        height: 385px;
+        margin-bottom: 10px;
+        position: relative;
+        background-color: #fff;
+        z-index: 1;
+    }
+
+    .type_2_2_left {
+        float: left;
+        width: 269px;
+        height: 385px;
+        background-color: #0b0506;
+        position: relative;
+    }
+
+    .type_2_2_right {
+        float: right;
+        width: 269px;
+        height: 385px;
+        background-color: #0b0506;
+        position: relative;
+    }
+
+    .type_2_2_left:before {
+        display: block;
+        position: absolute;
+        width: 48px;
+        height: 43px;
+        background: url(../assets/img/type_up.png) no-repeat;
+        top: -53px;
+        left: 50%;
+        margin-left: -24px;
+        content: ' ';
+    }
+
+    .type_2_2_right:after {
+        display: block;
+        position: absolute;
+        width: 48px;
+        height: 43px;
+        background: url(../assets/img/type_down.png) no-repeat;
+        bottom: -53px;
+        left: 50%;
+        margin-left: -24px;
+        content: ' ';
+    }
+
+    .type_2_3 {
+        width: 540px;
+        height: 331px;
+        margin-bottom: 10px;
+        position: relative;
+        background-color: #fff;
+    }
+
+    .type_2_4 {
+        width: 540px;
+        height: 393px;
+        margin-bottom: 11px;
+        position: relative;
+        background-color: #fff;
+        z-index: 1;
+    }
+
+    .type_2_5 {
+        width: 540px;
+        height: 393px;
+        margin-bottom: 10px;
+        position: relative;
+        background-color: #fff;
+        z-index: 1;
+        background-image: url(../assets/img/type_13.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .detai_type_3 {
+        width: 540px;
+        /*height: 1148px;*/
+        float: left;
+    }
+
+    .type_3_1 {
+        width: 540px;
+        height: 331px;
+        margin-bottom: 10px;
+        position: relative;
+        background-color: #0b0506;
+        z-index: 1;
+    }
+
+    .type_3_2 {
+        width: 540px;
+        height: 797px;
+        margin-bottom: 10px;
+        position: relative;
+        background-color: #fff;
+        background-image: url(../assets/img/type_10.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .type_3_3 {
+        width: 540px;
+        height: 393px;
+        margin-bottom: 11px;
+        position: relative;
+        background-color: #fff;
+        z-index: 1;
+        background-image: url(../assets/img/type_11.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .type_3_4 {
+        width: 540px;
+        height: 393px;
+        margin-bottom: 10px;
+        position: relative;
+        background-color: #fff;
+        z-index: 1;
+    }
+
+    .type_3_4:before {
+        display: block;
+        position: absolute;
+        width: 48px;
+        height: 43px;
+        background: url(../assets/img/type_up.png) no-repeat;
+        top: -53px;
+        left: 50%;
+        margin-left: -24px;
+        content: ' ';
+    }
+
+    .type_3_1:after {
+        display: block;
+        position: absolute;
+        width: 48px;
+        height: 43px;
+        background: url(../assets/img/type_down.png) no-repeat;
+        bottom: -53px;
+        left: 50%;
+        margin-left: -24px;
+        content: ' ';
+    }
 
   .home_yun .search_bar {
       text-align: center;
@@ -241,6 +563,10 @@ export default {
       position: relative;
       right: 76px;
       top: 16px;
+  }
+
+  .home_about {
+      margin: 120px auto 150px;
   }
 }
 
