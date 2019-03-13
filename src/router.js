@@ -47,5 +47,8 @@ export default new Router({
       name: 'addToCar',
       component: () => import ('./views/addToCar.vue')
     }
-  ]
+  ],
+  scrollBehavior () {
+    return { x: 0, y: 0}
+  }
 })
