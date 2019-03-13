@@ -11,20 +11,20 @@ export default new Vuex.Store({
   },
   mutations: {
     screenSzie (state, size) {
-      // state.transformScale = size;
-      // state.bodyHeight = document.getElementsByClassName('wrap')[0].clientHeight * size;
+      state.transformScale = size;
+      state.bodyHeight = document.getElementsByClassName('wrap')[0].clientHeight * size;
     },
     changePackageSetSteps (state, value) {
-      // state.packageSetSteps = value;
+      state.packageSetSteps = value;
     }
   },
   actions: {
     resetScreenSzie ({commit}) {
-      // let size = document.body.clientWidth / 1920;
-      // commit('screenSzie', size);
+      let size = document.body.clientWidth / 1920;
+      commit('screenSzie', size);
     },
     changeSteps ({commit}, value) {
-      // commit('changePackageSetSteps', value);
+      commit('changePackageSetSteps', value);
     }
   }
 })

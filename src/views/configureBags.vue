@@ -33,7 +33,9 @@
           </div>
         </div>
         <div class="rightPart">
-          右边部分
+          <p class="overviewTitle">
+            <span>概览</span>
+          </p>
         </div>
       </div>
     </div>
@@ -70,6 +72,7 @@ export default {
     padding: 40px 50px;
     box-sizing: border-box;
     .leftPart {
+      margin-top: 15px;
       flex: 1;
       .imgBox {
         margin: 50px 10px;
@@ -95,6 +98,13 @@ export default {
     }
     .rightPart {
       flex: 1;
+
+      .overviewTitle {
+        background-color: #A0A0A0;
+        height: 66px;
+        color: #F9F9F9;
+        line-height: 66px;
+      }
     }
   }
 }

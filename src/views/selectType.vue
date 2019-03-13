@@ -71,11 +71,11 @@ export default {
         width: 386px;
         padding: 100px 20px 45px;
         border-radius: 50px;
-        background-color: #fff;
+        // background-color: #fff;
         font-size: 26px;
         text-align: center;
         cursor: pointer;
-        background: linear-gradient(-45deg, transparent 15px, #58a 0);
+        background: linear-gradient(-45deg, transparent 15px, #fff 0);
 
         img {
           width: 414px;
