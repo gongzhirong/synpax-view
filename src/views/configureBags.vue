@@ -40,12 +40,128 @@
             </p>
           </div>
           <div class="selectType">
-            <p class="selected">内包装</p>
-            <p>外包装</p>
+            <p :class="{selected: data.type === 1}" @click="data.type = 1">内包装</p>
+            <p :class="{selected: data.type === 2}" @click="data.type = 2">外包装</p>
           </div>
           <div class="rightPartContent">
             <div class="rightPartTitle">
               <span>属性</span>
+            </div>
+            <div class="sizeImport">
+              <label for="height">
+                <span class="labelName">高</span>
+                <span class="circular">1</span>
+                <input id="height" v-model="data.height">
+              </label>
+              <label for="height">
+                <span class="labelName">宽</span>
+                <span class="circular">2</span>
+                <input id="height" v-model="data.weight">
+              </label>
+            </div>
+            <!-- 内容物 -->
+            <div class="importCard" :class="{active: importCardTitleOne}">
+              <div class="importCardTitle" @click="importCardTitleOne = !importCardTitleOne">
+                <span>内容物</span>
+                <span class="arrow" ></span>
+              </div>
+              <div class="importCardContent" v-show="importCardTitleOne">
+                <div class="selectBox">
+                  <span v-for="option in bagContentList" class="selectOtion" :class="{active: data.prop1 === option.value}" @click="data.prop1 = option.value">{{option.label}}</span>
+                </div>
+                <div style="margin-top: 2px;">
+                  <textarea rows="4" class="textareaStyle" placeholder="内容物描述">
+                  </textarea>
+                </div>
+                <!-- 上传区域 -->
+                <p style="margin-top: 10px;margin-bottom: 5px;">上传内容物图片</p>
+                <div class="uploadBox">
+                  <div class="imgLi" v-for="img in upLoadImgShowList">
+                    <img :src="img">
+                  </div>
+                  <div class="uploadButton" @click="openUpload">
+                    <span>+</span>
+                    <input ref="uploadInput" type="file" accept="image/*" class="uploadInput" @change="getDataPic">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 场景 -->
+            <div class="importCard" :class="{active: importCardTitleTwo}">
+              <div class="importCardTitle" @click="importCardTitleTwo = !importCardTitleTwo">
+                <span>场景</span>
+                <span class="arrow"></span>
+              </div>
+              <div class="importCardContent" v-show="importCardTitleTwo">
+                <div class="selectBox">
+                  <span v-for="option in sceneContentList" class="selectOtion" :class="{active: data.prop2 === option.value}" @click="data.prop2 = option.value">{{option.label}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rightPartContent">
+            <div class="rightPartTitle">
+              <span>工艺</span>
+            </div>
+            <!-- 表面 -->
+            <div class="importCard" :class="{active: importCardTitleFour}">
+              <div class="importCardTitle" @click="importCardTitleFour = !importCardTitleFour">
+                <span>表面</span>
+                <span class="arrow" ></span>
+              </div>
+              <div class="importCardContent" v-show="importCardTitleFour">
+                <div class="selectBox">
+                  <span v-for="option in surfaceContentList" class="selectOtion" :class="{active: data.prop3 === option.value}" @click="data.prop3 = option.value">{{option.label}}</span>
+                </div>
+              </div>
+            </div>
+            <!-- 开口方式 -->
+            <div class="importCard" :class="{active: importCardTitleFive}">
+              <div class="importCardTitle" @click="importCardTitleFive = !importCardTitleFive">
+                <span>开口方式</span>
+                <span class="arrow"></span>
+              </div>
+              <div class="importCardContent" v-show="importCardTitleFive">
+                <div class="selectBox">
+                  <span v-for="option in openingContentList" class="selectOtion" :class="{active: data.prop4 === option.value}" @click="data.prop4 = option.value">{{option.label}}</span>
+                </div>
+              </div>
+            </div>
+            <!-- 挂孔 -->
+            <div class="importCard" :class="{active: importCardTitleSix}">
+              <div class="importCardTitle" @click="importCardTitleSix = !importCardTitleSix">
+                <span>挂孔</span>
+                <span class="arrow"></span>
+              </div>
+              <div class="importCardContent" v-show="importCardTitleSix">
+                <div class="selectBox">
+                  <span v-for="option in holeContentList" class="selectOtion" :class="{active: data.prop5 === option.value}" @click="data.prop5 = option.value">{{option.label}}</span>
+                </div>
+              </div>
+            </div>
+            <!-- 材质 -->
+            <div class="importCard" :class="{active: importCardTitleSix}">
+              <div class="importCardTitle" @click="importCardTitleSix = !importCardTitleSix">
+                <span>材质</span>
+                <span class="arrow"></span>
+              </div>
+              <div style="width: 50%;">
+                <div class="importCardContent">
+                  <div class="selectComponent">
+                    <div class="currentSelectOption">BOPA</div>
+                    <div class="buttonBox">
+                      <span class="triangle"></span>
+                    </div>
+                    <div class="selectList">
+                      <ul>
+                        <li>CPP</li>
+                        <li>PET</li>
+                        <li>PE</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -58,10 +174,77 @@ import PackageSteps from '../components/packageSteps.vue'
 export default {
   name: 'configureBags',
   data () {
-    return {}
+    return {
+      // 配置信息
+      data: {
+        type: 1,
+        prop1: false,
+        prop2: false,
+        prop3: false,
+        prop4: false,
+        prop5: false
+      },
+      upLoadImgShowList: [],
+      importCardTitleOne: true,
+      importCardTitleTwo: true,
+      importCardTitleThree: true,
+      importCardTitleFour: true,
+      importCardTitleFive: true,
+      importCardTitleSix: true,
+      // 内容物选择项
+      bagContentList: [
+        { label: '油', value: '1' },
+        { label: '辣', value: '2' },
+        { label: '酸', value: '3' },
+        { label: '碱', value: '4' },
+        { label: '粉', value: '5' }
+      ],
+      // 场景选择项
+      sceneContentList: [
+        { label: '速冻', value: '1' },
+        { label: '常温', value: '2' },
+        { label: '水煮', value: '3' },
+        { label: '蒸煮', value: '4' }
+      ],
+      // 表面选择项
+      surfaceContentList: [
+        { label: '洗铝', value: '1' },
+        { label: '阴阳', value: '2' },
+        { label: '拉链', value: '3' },
+        { label: '哑光', value: '4' },
+        { label: '镭射', value: '5' },
+        { label: '开窗', value: '6' }
+      ],
+      // 开口方式
+      openingContentList: [
+        { label: '拉链', value: '1' },
+        { label: '易撕口', value: '2' },
+        { label: '拉骨', value: '3' },
+        { label: '侧拉链', value: '4' }
+      ],
+      holeContentList: [
+        { label: '飞机孔', value: '1' },
+        { label: '圆孔', value: '2' },
+        { label: '异形孔', value: '3' }
+      ]
+    }
   },
   components: {
     PackageSteps
+  },
+  methods: {
+    // 图片上传
+    openUpload () {
+      this.$refs.uploadInput.click()
+    },
+    // 本地获取图片数据
+    getDataPic () {
+      let reads= new FileReader()
+      reads.readAsDataURL(event.target.files[0])
+      reads.onload = (e) => {
+        this.upLoadImgShowList.push(e.target.result)
+      }
+    }
   },
   created () {
     this.$store.dispatch('changeSteps', 'configureBags')
@@ -86,6 +269,7 @@ export default {
     .leftPart {
       margin-top: 15px;
       flex: 1;
+      padding-right: 140px;
       .imgBox {
         margin: 50px 10px;
       }
@@ -142,7 +326,7 @@ export default {
           border: 1px solid #c8c8c8;
           text-align: center;
           margin: 0 12px;
-          cursor: default;
+          cursor: pointer;
 
           &.selected {
             background-color: #a0a0a0;
@@ -153,12 +337,190 @@ export default {
 
       .rightPartContent {
         padding: 0 10px;
+        margin-bottom: 16px;
 
         .rightPartTitle {
           background-color: #a0a0a0;
           padding: 13px 42px;
           color: white;
         }
+
+        .sizeImport {
+          margin: 56px 0 56px 40px;
+          .labelName {
+            color: #B2B2B2;
+          }
+
+          label {
+            margin-right: 12px;
+          }
+
+          .circular {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            border-radius: 100px;
+            border: 1px solid #B2B2B2;
+            color: #B2B2B2;
+            margin: 0 5px;
+          }
+
+          input {
+            border: none;
+            background-color: #F1F1F1;
+            color: #989595;
+            padding: 12px 12px;
+            width: 80px;
+          }
+        }
+
+        .importCard {
+          margin-top: 36px;
+          .importCardTitle {
+            cursor: pointer;
+            border-bottom: 1px solid #585858;
+            font-size: 24px;
+            padding: 0 40px 16px;
+
+            .arrow {
+              float: right;
+              display: inline-block;
+              width: 16px;
+              height: 16px;
+              margin-top: 12px;
+              border-right: 3px solid;
+              border-bottom: 3px solid;
+              transform: rotate(-45deg);
+              transition: all .5s;
+            }
+          }
+
+          .importCardContent {
+            padding: 26px 40px;
+            transition: all 5s;
+          }
+
+          &.active {
+            .arrow {
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .selectBox {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    .selectOtion {
+      cursor: pointer;
+      background-color: #E5E5E5;
+      margin: 0 1% 15px;
+      line-height: 65px;
+      text-align: center;
+      width: 23%;
+      &.active {
+        background-color: #a0a0a0;
+        color: white;
+      }
+    }
+  }
+
+  .textareaStyle {
+    width: 100%;
+    background-color: #F1F1F1;
+    color: #A9ABAA;
+    padding: 12px;
+    border: none;
+  }
+
+  .imgLi {
+    display: inline-block;
+    width: 89px;
+    height: 89px;
+    margin-right: 12px;
+    vertical-align: bottom;
+
+    img {
+      width: 89px;
+      height: 89px;
+    }
+  }
+
+  .uploadButton {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    padding: 14px;
+    background-color: #E5E5E5;
+    border: 1px solid #E9E9E9;
+
+    span {
+      color: white;
+      display: inline-block;
+      width: 56px;
+      height: 56px;
+      border-radius: 60px;
+      font-size: 50px;
+      line-height: 48px;
+      text-align: center;
+      border: 2px dashed white;
+    }
+
+    .uploadInput {
+      display: none;
+    }
+  }
+  .selectComponent {
+    padding-right: 60px;
+    position: relative;
+    .currentSelectOption {
+      background-color: #E5E5E5;
+      width: 100%;
+      line-height: 65px;
+      text-align: center;
+    }
+
+    .buttonBox {
+      background-color: #E5E5E5;
+      position: absolute;
+      padding: 7px 13px 11px;
+      top: 8px;
+      right: 0px;
+      cursor: pointer;
+
+      .triangle {
+        display: inline-block;
+        height: 1px;
+        width: 1px;
+        border: 10px solid white;
+        border-top-color: #E5E5E5;
+        border-left-color: #E5E5E5;
+        background-color: white;
+        transform: rotate(45deg);
+      }
+    }
+
+    .selectList {
+      display: none;
+      width: 100%;
+      box-sizing: border-box;
+      padding-right: 40px;
+      position: absolute;
+      padding-right: 60px;
+      box-sizing: border-box;
+
+      li {
+        background-color: #E5E5E5;
+        line-height: 65px;
+        text-align: center;
+        cursor: default;
       }
     }
   }
