@@ -140,28 +140,63 @@
               </div>
             </div>
             <!-- 材质 -->
-            <div class="importCard" :class="{active: importCardTitleSix}">
-              <div class="importCardTitle" @click="importCardTitleSix = !importCardTitleSix">
+            <div class="importCard" :class="{active: importCardTitleSeven}">
+              <div class="importCardTitle" @click="importCardTitleSeven = !importCardTitleSeven">
                 <span>材质</span>
                 <span class="arrow"></span>
               </div>
-              <div style="width: 50%;">
-                <div class="importCardContent">
-                  <div class="selectComponent">
-                    <div class="currentSelectOption">BOPA</div>
-                    <div class="buttonBox">
-                      <span class="triangle"></span>
-                    </div>
-                    <div class="selectList">
-                      <ul>
-                        <li>CPP</li>
-                        <li>PET</li>
-                        <li>PE</li>
-                      </ul>
-                    </div>
+              <div class="importCardContent" v-show="importCardTitleSeven">
+                <div class="row">
+                  <div class="rowItem">
+                    <SelectComponent v-model="data.prop6">
+                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
+                    </SelectComponent>
+                  </div>
+                  <div class="rowItem">
+                    <input type="" name="">mm
                   </div>
                 </div>
+                <div class="row">
+                  <div class="rowItem">
+                    <SelectComponent v-model="data.prop7">
+                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
+                    </SelectComponent>
+                  </div>
+                  <div class="rowItem">
+                    <input type="" name="">mm
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="rowItem">
+                    <SelectComponent v-model="data.prop8">
+                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
+                    </SelectComponent>
+                  </div>
+                  <div class="rowItem">
+                    <input type="" name="">mm
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="rowItem">
+                    <SelectComponent v-model="data.prop9">
+                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
+                    </SelectComponent>
+                  </div>
+                  <div class="rowItem">
+                    <input type="" name="">mm
+                  </div>
+                </div>
+
+                <div class="remark">
+                  <span style="margin: 0 6px 0 30px;">备注</span>
+                  <input v-model="data.remark">
+                </div>
               </div>
+            </div>
+          </div>
+          <div class="flooter">
+            <div class="buttonStyle">
+              显示汇总 >
             </div>
           </div>
         </div>
@@ -171,6 +206,8 @@
 </template>
 <script>
 import PackageSteps from '../components/packageSteps.vue'
+import SelectComponent from '../components/selectComponent.vue'
+import Option from '../components/option.vue'
 export default {
   name: 'configureBags',
   data () {
@@ -182,7 +219,11 @@ export default {
         prop2: false,
         prop3: false,
         prop4: false,
-        prop5: false
+        prop5: false,
+        prop6: '',
+        prop7: '',
+        prop8: '',
+        prop9: ''
       },
       upLoadImgShowList: [],
       importCardTitleOne: true,
@@ -191,6 +232,7 @@ export default {
       importCardTitleFour: true,
       importCardTitleFive: true,
       importCardTitleSix: true,
+      importCardTitleSeven: true,
       // 内容物选择项
       bagContentList: [
         { label: '油', value: '1' },
@@ -226,11 +268,28 @@ export default {
         { label: '飞机孔', value: '1' },
         { label: '圆孔', value: '2' },
         { label: '异形孔', value: '3' }
+      ],
+      textureContentList: [
+        { label: 'BOPA', value: '1' },
+        { label: 'CPP', value: '2' },
+        { label: 'PET', value: '3' },
+        { label: 'PE', value: '4' },
+        { label: 'KBOPA', value: '5' },
+        { label: 'VMCPP', value: '6' },
+        { label: 'AL', value: '7' },
+        { label: 'HDPE', value: '8' },
+        { label: '绵纸', value: '9' },
+        { label: 'LLDPE', value: '10' },
+        { label: 'VMPET', value: '11' },
+        { label: 'LDPE', value: '12' },
+        { label: 'KPET', value: '13' }
       ]
     }
   },
   components: {
-    PackageSteps
+    PackageSteps,
+    SelectComponent,
+    Option
   },
   methods: {
     // 图片上传
@@ -256,6 +315,7 @@ export default {
   .bg {
     background-color: #F5F5F5;
     padding-top: 22px;
+    padding-bottom: 80px;
   }
   .content {
     font-size: 20px;
@@ -399,7 +459,21 @@ export default {
 
           .importCardContent {
             padding: 26px 40px;
-            transition: all 5s;
+            .row {
+              margin: 16px 0;
+
+              .rowItem {
+                display: inline-block;
+                width: 50%;
+
+                input {
+                  border: none;
+                  width: 150px;
+                  margin-left: 50px;
+                  border-bottom: 1px solid;
+                }
+              }
+            }
           }
 
           &.active {
@@ -477,52 +551,29 @@ export default {
       display: none;
     }
   }
-  .selectComponent {
-    padding-right: 60px;
-    position: relative;
-    .currentSelectOption {
-      background-color: #E5E5E5;
-      width: 100%;
-      line-height: 65px;
-      text-align: center;
+
+  .remark {
+    margin-top: 80px;
+    input {
+      border: none;
+      background-color: #F1F1F1;
+      color: #989595;
+      padding: 12px 12px;
+      width: 365px;
     }
+  }
 
-    .buttonBox {
-      background-color: #E5E5E5;
-      position: absolute;
-      padding: 7px 13px 11px;
-      top: 8px;
-      right: 0px;
-      cursor: pointer;
+  .flooter {
+    text-align: center;
+  }
 
-      .triangle {
-        display: inline-block;
-        height: 1px;
-        width: 1px;
-        border: 10px solid white;
-        border-top-color: #E5E5E5;
-        border-left-color: #E5E5E5;
-        background-color: white;
-        transform: rotate(45deg);
-      }
-    }
-
-    .selectList {
-      display: none;
-      width: 100%;
-      box-sizing: border-box;
-      padding-right: 40px;
-      position: absolute;
-      padding-right: 60px;
-      box-sizing: border-box;
-
-      li {
-        background-color: #E5E5E5;
-        line-height: 65px;
-        text-align: center;
-        cursor: default;
-      }
-    }
+  .buttonStyle {
+    cursor: pointer;
+    display: inline-block;
+    background-color: #279BB4;
+    color: white;
+    border-radius: 8px;
+    padding: 12px 26px;
   }
 }
 </style>
