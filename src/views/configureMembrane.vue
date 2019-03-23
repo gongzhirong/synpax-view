@@ -1,11 +1,11 @@
 <template>
-  <div class="configureBags">
+  <div class="configureMembrane">
     <PackageSteps />
     <div class="bg">
       <div class="content">
         <div class="leftPart">
-          <p>三边封</p>
-          <p>THREE SIDE BOTTOM BAGS</p>
+          <p>膜</p>
+          <p>OPGAN BAG</p>
           <div class="imgBox">
             <img src="../assets/img/type_4.png">
           </div>
@@ -39,157 +39,73 @@
               <span>概览</span>
             </p>
           </div>
-          <div class="selectType">
-            <p :class="{selected: data.type === 1}" @click="data.type = 1">内包装</p>
-            <p :class="{selected: data.type === 2}" @click="data.type = 2">外包装</p>
-          </div>
           <div class="rightPartContent">
-            <div class="rightPartTitle">
-              <span>属性</span>
-            </div>
-            <div class="sizeImport">
-              <label for="height">
-                <span class="labelName">高</span>
-                <span class="circular">1</span>
-                <input id="height" v-model="data.height">
-              </label>
-              <label for="height">
-                <span class="labelName">宽</span>
-                <span class="circular">2</span>
-                <input id="height" v-model="data.weight">
-              </label>
-            </div>
-            <!-- 内容物 -->
+            <!-- 属性 -->
             <div class="importCard" :class="{active: importCardTitleOne}">
               <div class="importCardTitle" @click="importCardTitleOne = !importCardTitleOne">
-                <span>内容物</span>
+                <span>属性</span>
                 <span class="arrow" ></span>
               </div>
               <div class="importCardContent" v-show="importCardTitleOne">
                 <div class="selectBox">
-                  <span v-for="option in bagContentList" class="selectOtion" :class="{active: data.prop1 === option.value}" @click="data.prop1 = option.value">{{option.label}}</span>
-                </div>
-                <div style="margin-top: 2px;">
-                  <textarea rows="4" class="textareaStyle" placeholder="内容物描述">
-                  </textarea>
-                </div>
-                <!-- 上传区域 -->
-                <p style="margin-top: 10px;margin-bottom: 5px;">上传内容物图片</p>
-                <div class="uploadBox">
-                  <div class="imgLi" v-for="img in upLoadImgShowList">
-                    <img :src="img">
-                  </div>
-                  <div class="uploadButton" @click="openUpload">
-                    <span>+</span>
-                    <input ref="uploadInput" type="file" accept="image/*" class="uploadInput" @change="getDataPic">
-                  </div>
+                  <span v-for="option in attributeList" class="selectOtion" :class="{active: data.prop1 === option.value}" @click="data.prop1 = option.value">{{option.label}}</span>
                 </div>
               </div>
             </div>
-            <!-- 场景 -->
+            <!-- 性能 -->
             <div class="importCard" :class="{active: importCardTitleTwo}">
               <div class="importCardTitle" @click="importCardTitleTwo = !importCardTitleTwo">
-                <span>场景</span>
+                <span>性能</span>
                 <span class="arrow"></span>
               </div>
               <div class="importCardContent" v-show="importCardTitleTwo">
                 <div class="selectBox">
-                  <span v-for="option in sceneContentList" class="selectOtion" :class="{active: data.prop2 === option.value}" @click="data.prop2 = option.value">{{option.label}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="rightPartContent">
-            <div class="rightPartTitle">
-              <span>工艺</span>
-            </div>
-            <!-- 表面 -->
-            <div class="importCard" :class="{active: importCardTitleFour}">
-              <div class="importCardTitle" @click="importCardTitleFour = !importCardTitleFour">
-                <span>表面</span>
-                <span class="arrow" ></span>
-              </div>
-              <div class="importCardContent" v-show="importCardTitleFour">
-                <div class="selectBox">
-                  <span v-for="option in surfaceContentList" class="selectOtion" :class="{active: data.prop3 === option.value}" @click="data.prop3 = option.value">{{option.label}}</span>
-                </div>
-              </div>
-            </div>
-            <!-- 开口方式 -->
-            <div class="importCard" :class="{active: importCardTitleFive}">
-              <div class="importCardTitle" @click="importCardTitleFive = !importCardTitleFive">
-                <span>开口方式</span>
-                <span class="arrow"></span>
-              </div>
-              <div class="importCardContent" v-show="importCardTitleFive">
-                <div class="selectBox">
-                  <span v-for="option in openingContentList" class="selectOtion" :class="{active: data.prop4 === option.value}" @click="data.prop4 = option.value">{{option.label}}</span>
-                </div>
-              </div>
-            </div>
-            <!-- 挂孔 -->
-            <div class="importCard" :class="{active: importCardTitleSix}">
-              <div class="importCardTitle" @click="importCardTitleSix = !importCardTitleSix">
-                <span>挂孔</span>
-                <span class="arrow"></span>
-              </div>
-              <div class="importCardContent" v-show="importCardTitleSix">
-                <div class="selectBox">
-                  <span v-for="option in holeContentList" class="selectOtion" :class="{active: data.prop5 === option.value}" @click="data.prop5 = option.value">{{option.label}}</span>
+                  <span v-for="option in performanceList" class="selectOtion" :class="{active: data.prop2 === option.value}" @click="data.prop2 = option.value">{{option.label}}</span>
                 </div>
               </div>
             </div>
             <!-- 材质 -->
-            <div class="importCard" :class="{active: importCardTitleSeven}">
-              <div class="importCardTitle" @click="importCardTitleSeven = !importCardTitleSeven">
+            <div class="importCard" :class="{active: importCardTitleThree}">
+              <div class="importCardTitle" @click="importCardTitleThree = !importCardTitleThree">
                 <span>材质</span>
                 <span class="arrow"></span>
               </div>
-              <div class="importCardContent" v-show="importCardTitleSeven">
-                <div class="row">
-                  <div class="rowItem">
-                    <SelectComponent v-model="data.prop6">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
-                    </SelectComponent>
-                  </div>
-                  <div class="rowItem">
-                    <input type="" name="">mm
-                  </div>
+              <div class="importCardContent" v-show="importCardTitleThree">
+                <div class="selectBox">
+                  <span v-for="option in materialList" class="selectOtion" :class="{active: data.prop3 === option.value}" @click="data.prop3 = option.value">{{option.label}}</span>
                 </div>
-                <div class="row">
-                  <div class="rowItem">
-                    <SelectComponent v-model="data.prop7">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
-                    </SelectComponent>
-                  </div>
-                  <div class="rowItem">
-                    <input type="" name="">mm
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="rowItem">
-                    <SelectComponent v-model="data.prop8">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
-                    </SelectComponent>
-                  </div>
-                  <div class="rowItem">
-                    <input type="" name="">mm
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="rowItem">
-                    <SelectComponent v-model="data.prop9">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
-                    </SelectComponent>
-                  </div>
-                  <div class="rowItem">
-                    <input type="" name="">mm
-                  </div>
-                </div>
-
+              </div>
+            </div>
+            <!-- 自定义 -->
+            <div class="importCard" :class="{active: importCardTitleFour}">
+              <div class="importCardTitle" @click="importCardTitleFour = !importCardTitleFour">
+                <span>材质</span>
+                <span class="arrow"></span>
+              </div>
+              <div class="importCardContent" v-show="importCardTitleFour">
                 <div class="remark">
-                  <span style="margin: 0 6px 0 30px;">备注</span>
-                  <input v-model="data.remark">
+                  <div style="margin-top: 20px;">
+                    <span style="margin: 0 6px 0 30px;">备注名</span>
+                    <input v-model="data.remark">
+                  </div>
+                  <div style="margin-top: 20px;">
+                    <span style="margin: 0 6px 0 30px;">内容物</span>
+                    <input v-model="data.remark">
+                  </div>
+                </div>
+                <div class="sizeImport">
+                  <label for="height">
+                    <span class="labelName">长</span>
+                    <input id="height" v-model="data.long">
+                  </label>
+                  <label for="height">
+                    <span class="labelName">宽</span>
+                    <input id="height" v-model="data.weight">
+                  </label>
+                  <label for="height">
+                    <span class="labelName">高</span>
+                    <input id="height" v-model="data.height">
+                  </label>
                 </div>
               </div>
             </div>
@@ -209,7 +125,7 @@ import PackageSteps from '../components/packageSteps.vue'
 import SelectComponent from '../components/selectComponent.vue'
 import Option from '../components/option.vue'
 export default {
-  name: 'configureBags',
+  name: 'configureMembrane',
   data () {
     return {
       // 配置信息
@@ -233,29 +149,39 @@ export default {
       importCardTitleFive: true,
       importCardTitleSix: true,
       importCardTitleSeven: true,
-      // 内容物选择项
-      bagContentList: [
-        { label: '油', value: '1' },
-        { label: '辣', value: '2' },
-        { label: '酸', value: '3' },
-        { label: '碱', value: '4' },
-        { label: '粉', value: '5' }
-      ],
-      // 场景选择项
-      sceneContentList: [
-        { label: '速冻', value: '1' },
-        { label: '常温', value: '2' },
-        { label: '水煮', value: '3' },
-        { label: '蒸煮', value: '4' }
-      ],
-      // 表面选择项
-      surfaceContentList: [
+      // 属性选择项
+      attributeList: [
         { label: '洗铝', value: '1' },
         { label: '阴阳', value: '2' },
-        { label: '拉链', value: '3' },
-        { label: '哑光', value: '4' },
-        { label: '镭射', value: '5' },
-        { label: '开窗', value: '6' }
+        { label: '镭射', value: '3' },
+        { label: '哑光', value: '4' }
+      ],
+      // 性能选择项
+      performanceList: [
+        { label: '高温蒸煮', value: '1' },
+        { label: '抽真空', value: '2' },
+        { label: '油泡', value: '3' },
+        { label: '冷冻', value: '4' },
+        { label: '高阻隔', value: '5' },
+        { label: '热收缩', value: '6' },
+        { label: '易揭膜', value: '7' }
+      ],
+      // 材质选择项
+      materialList: [
+        { label: 'BOPA', value: '1' },
+        { label: 'CPP', value: '2' },
+        { label: 'PET', value: '3' },
+        { label: 'PE', value: '4' },
+        { label: 'KBOPA', value: '5' },
+        { label: 'VMCPP', value: '6' },
+        { label: 'AL', value: '7' },
+        { label: 'HDPE', value: '8' },
+        { label: '绵纸', value: '9' },
+        { label: 'LLDPE', value: '10' },
+        { label: 'VMPET', value: '11' },
+        { label: 'LDPE', value: '12' },
+        { label: 'KPET', value: '13' },
+        { label: '牛皮纸', value: '14' }
       ],
       // 开口方式
       openingContentList: [
@@ -311,7 +237,7 @@ export default {
 }
 </script>
 <style lang="less">
-.configureBags {
+.configureMembrane {
   .bg {
     background-color: #F5F5F5;
     padding-top: 22px;
@@ -407,9 +333,6 @@ export default {
 
         .sizeImport {
           margin: 56px 0 56px 40px;
-          .labelName {
-            color: #B2B2B2;
-          }
 
           label {
             margin-right: 12px;
@@ -432,6 +355,7 @@ export default {
             background-color: #F1F1F1;
             color: #989595;
             padding: 12px 12px;
+            margin-left: 10px;
             width: 80px;
           }
         }
@@ -553,13 +477,14 @@ export default {
   }
 
   .remark {
-    margin-top: 80px;
+    margin-top: 32px;
     input {
       border: none;
       background-color: #F1F1F1;
       color: #989595;
       padding: 12px 12px;
-      width: 365px;
+      margin-left: 20px;
+      width: 340px;
     }
   }
 

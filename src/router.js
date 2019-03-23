@@ -41,6 +41,12 @@ export default new Router({
       name: 'configureBags',
       component: () => import ('./views/configureBags.vue')
     },
+    // 配置膜
+    {
+      path: '/configureMembrane',
+      name: 'configureMembrane',
+      component: () => import ('./views/configureMembrane.vue')
+    },
     // 加入购物车
     {
       path: '/addToCar',

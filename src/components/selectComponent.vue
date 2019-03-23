@@ -19,7 +19,12 @@ export default {
     event: 'change'
   },
   props: {
-    value: ''
+    value: {
+      type: [String, Number],
+      default () {
+        return ''
+      }
+    }
   },
   data () {
     return {

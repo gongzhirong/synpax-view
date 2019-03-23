@@ -4,8 +4,18 @@
 <script>
 export default {
   props: {
-    value: '',
-    label: ''
+    value: {
+      type: [Number, String],
+      default () {
+        return ''
+      }
+    },
+    label: {
+      type: [Number, String],
+      default () {
+        return ''
+      }
+    }
   },
   data () {
     return {
