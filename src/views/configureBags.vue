@@ -67,7 +67,7 @@
               </div>
               <div class="importCardContent" v-show="importCardTitleOne">
                 <div class="selectBox">
-                  <span v-for="option in bagContentList" class="selectOtion" :class="{active: data.prop1 === option.value}" @click="data.prop1 = option.value">{{option.label}}</span>
+                  <span v-for="option in bagContentList" class="selectOtion" :class="{active: data.prop1 === option.value}" @click="data.prop1 = option.value" :key="option.value">{{option.label}}</span>
                 </div>
                 <div style="margin-top: 2px;">
                   <textarea rows="4" class="textareaStyle" placeholder="内容物描述">
@@ -76,7 +76,7 @@
                 <!-- 上传区域 -->
                 <p style="margin-top: 10px;margin-bottom: 5px;">上传内容物图片</p>
                 <div class="uploadBox">
-                  <div class="imgLi" v-for="img in upLoadImgShowList">
+                  <div class="imgLi" v-for="img in upLoadImgShowList" :key="img">
                     <img :src="img">
                   </div>
                   <div class="uploadButton" @click="openUpload">
@@ -94,7 +94,7 @@
               </div>
               <div class="importCardContent" v-show="importCardTitleTwo">
                 <div class="selectBox">
-                  <span v-for="option in sceneContentList" class="selectOtion" :class="{active: data.prop2 === option.value}" @click="data.prop2 = option.value">{{option.label}}</span>
+                  <span v-for="option in sceneContentList" class="selectOtion" :class="{active: data.prop2 === option.value}" @click="data.prop2 = option.value" :key="option.value">{{option.label}}</span>
                 </div>
               </div>
             </div>
@@ -111,7 +111,7 @@
               </div>
               <div class="importCardContent" v-show="importCardTitleFour">
                 <div class="selectBox">
-                  <span v-for="option in surfaceContentList" class="selectOtion" :class="{active: data.prop3 === option.value}" @click="data.prop3 = option.value">{{option.label}}</span>
+                  <span v-for="option in surfaceContentList" class="selectOtion" :class="{active: data.prop3 === option.value}" @click="data.prop3 = option.value" :key="option.value">{{option.label}}</span>
                 </div>
               </div>
             </div>
@@ -123,7 +123,7 @@
               </div>
               <div class="importCardContent" v-show="importCardTitleFive">
                 <div class="selectBox">
-                  <span v-for="option in openingContentList" class="selectOtion" :class="{active: data.prop4 === option.value}" @click="data.prop4 = option.value">{{option.label}}</span>
+                  <span v-for="option in openingContentList" class="selectOtion" :class="{active: data.prop4 === option.value}" @click="data.prop4 = option.value" :key="option.value">{{option.label}}</span>
                 </div>
               </div>
             </div>
@@ -135,7 +135,7 @@
               </div>
               <div class="importCardContent" v-show="importCardTitleSix">
                 <div class="selectBox">
-                  <span v-for="option in holeContentList" class="selectOtion" :class="{active: data.prop5 === option.value}" @click="data.prop5 = option.value">{{option.label}}</span>
+                  <span v-for="option in holeContentList" class="selectOtion" :class="{active: data.prop5 === option.value}" @click="data.prop5 = option.value" :key="option.value">{{option.label}}</span>
                 </div>
               </div>
             </div>
@@ -149,7 +149,7 @@
                 <div class="row">
                   <div class="rowItem">
                     <SelectComponent v-model="data.prop6">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
+                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
                     </SelectComponent>
                   </div>
                   <div class="rowItem">
@@ -159,7 +159,7 @@
                 <div class="row">
                   <div class="rowItem">
                     <SelectComponent v-model="data.prop7">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
+                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
                     </SelectComponent>
                   </div>
                   <div class="rowItem">
@@ -169,7 +169,7 @@
                 <div class="row">
                   <div class="rowItem">
                     <SelectComponent v-model="data.prop8">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
+                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
                     </SelectComponent>
                   </div>
                   <div class="rowItem">
@@ -179,7 +179,7 @@
                 <div class="row">
                   <div class="rowItem">
                     <SelectComponent v-model="data.prop9">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label"></Option>
+                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
                     </SelectComponent>
                   </div>
                   <div class="rowItem">

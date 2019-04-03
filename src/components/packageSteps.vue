@@ -2,7 +2,7 @@
   <div class="packageSet">
     <div class="header">
       <ul class="stepsBox">
-        <li v-for="(name, type, index) in stepList" :class="{active: setSteps(type)}">{{`${++index}.${name}`}}</li>
+        <li v-for="(name, type, index) in stepList" :class="{active: setSteps(type)}" :key="type">{{`${++index}.${name}`}}</li>
       </ul>
     </div>
   </div>
@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     setSteps (type) {
-      console.log(type)
       if (this.packageSetSteps === 'configureMembrane' && type === 'configureBags') {
         return true
       } else if (this.packageSetSteps === type) {
