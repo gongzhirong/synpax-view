@@ -16,6 +16,7 @@ export default {
         selectType: '选择类型',
         selectBag: '选择袋子',
         configureBags: '配置袋子',
+        configureMembrane: '配置膜',
         addToCar: '加入购物车',
         finish: '完成包装配置'
       }
@@ -26,11 +27,12 @@ export default {
       return this.$store.state.packageSetSteps
     }
   },
+    created () {
+      // console.log(name)
+    },
   methods: {
     setSteps (type) {
-      if (this.packageSetSteps === 'configureMembrane' && type === 'configureBags') {
-        return true
-      } else if (this.packageSetSteps === type) {
+      if (this.packageSetSteps === type) {
         return true
       } else {
         return false

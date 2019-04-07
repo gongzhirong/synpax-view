@@ -236,7 +236,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('changeSteps', 'configureBags')
+    this.$store.dispatch('changeSteps', 'configureMembrane')
   }
 }
 </script>
