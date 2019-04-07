@@ -7,13 +7,13 @@
         <div class="line"></div>
       </div>
       <div class="body">
-        <div class="choseWrap">
-          <img src="../assets/img/type_4.png">
+        <div class="choseWrap" @click="selectBag">
+          <img src="../assets/img/bag.png">
           <p>包装袋</p>
           <p>PACKING BAG</p>
         </div>
-        <div class="choseWrap picHandle">
-          <img src="../assets/img/type_4.png">
+        <div class="choseWrap picHandle" @click="selectMembrane">
+          <img src="../assets/img/membrane.png">
           <p>包装膜</p>
           <p>PACKING BAG</p>
         </div>
@@ -32,6 +32,14 @@ export default {
   },
   created () {
     this.$store.dispatch('changeSteps', 'selectType')
+  },
+  methods: {
+    selectBag() {
+        this.$router.push({path: '/selectBag'});
+    },
+    selectMembrane() {
+        this.$router.push({path: '/configureMembrane'});
+    },
   }
 }
 </script>
@@ -76,9 +84,8 @@ export default {
         text-align: center;
         cursor: pointer;
         background: linear-gradient(-45deg, transparent 15px, #fff 0);
-
         img {
-          width: 414px;
+          width: 346px;
         }
       }
     }

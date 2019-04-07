@@ -3,11 +3,11 @@
     <PackageSteps />
     <div class="bg">
       <div class="content">
-        <div class="leftPart">
+        <div class="leftPart" v-if="this.$route.query.type == '1'">
           <p>三边封</p>
-          <p>THREE SIDE BOTTOM BAGS</p>
+          <p>THREE SIDE SEALING</p>
           <div class="imgBox">
-            <img src="../assets/img/type_4.png">
+            <img src="../assets/images/selectBag/1.png">
           </div>
           <div class="descBox">
             <p class="title">
@@ -18,17 +18,133 @@
           <div class="selectImg">
             <ul>
               <li>
-                <img src="../assets/img/type_4.png">
+                <img src="../assets/images/selectBag/1.png">
               </li>
               <li>
-                <img src="../assets/img/type_4.png">
+                <img src="../assets/images/selectBag/1.png">
               </li>
               <li>
-                <img src="../assets/img/type_4.png">
+                <img src="../assets/images/selectBag/1.png">
+              </li>
+              <!--<li>-->
+                <!--<img src="../assets/images/selectBag/1.png">-->
+              <!--</li>-->
+            </ul>
+          </div>
+        </div>
+        <div class="leftPart" v-if="this.$route.query.type == '2'">
+          <p>三边封立底袋</p>
+          <p>THREE SIDE BOTTOM BAGS</p>
+          <div class="imgBox">
+            <img src="../assets/images/selectBag/2.png">
+          </div>
+          <div class="descBox">
+            <p class="title">
+              袋形描述
+            </p>
+            <p>XXXXXXXXXXXXXXXXXXXXXXX</p>
+          </div>
+          <div class="selectImg">
+            <ul>
+              <li>
+                <img src="../assets/images/selectBag/2.png">
               </li>
               <li>
-                <img src="../assets/img/type_4.png">
+                <img src="../assets/images/selectBag/2.png">
               </li>
+              <li>
+                <img src="../assets/images/selectBag/2.png">
+              </li>
+              <!--<li>-->
+                <!--<img src="../assets/images/selectBag/2.png">-->
+              <!--</li>-->
+            </ul>
+          </div>
+        </div>
+        <div class="leftPart" v-if="this.$route.query.type == '3'">
+          <p>四边封</p>
+          <p>FOUR SIDE SEALING</p>
+          <div class="imgBox">
+            <img src="../assets/images/selectBag/3.png">
+          </div>
+          <div class="descBox">
+            <p class="title">
+              袋形描述
+            </p>
+            <p>XXXXXXXXXXXXXXXXXXXXXXX</p>
+          </div>
+          <div class="selectImg">
+            <ul>
+              <li>
+                <img src="../assets/images/selectBag/3.png">
+              </li>
+              <li>
+                <img src="../assets/images/selectBag/3.png">
+              </li>
+              <li>
+                <img src="../assets/images/selectBag/3.png">
+              </li>
+              <!--<li>-->
+                <!--<img src="../assets/images/selectBag/3.png">-->
+              <!--</li>-->
+            </ul>
+          </div>
+        </div>
+        <div class="leftPart" v-if="this.$route.query.type == '4'">
+          <p>八边封</p>
+          <p>EIGHT SIDE SEALING</p>
+          <div class="imgBox">
+            <img src="../assets/images/selectBag/4.png">
+          </div>
+          <div class="descBox">
+            <p class="title">
+              袋形描述
+            </p>
+            <p>XXXXXXXXXXXXXXXXXXXXXXX</p>
+          </div>
+          <div class="selectImg">
+            <ul>
+              <li>
+                <img src="../assets/images/selectBag/4.png">
+              </li>
+              <li>
+                <img src="../assets/images/selectBag/4.png">
+              </li>
+              <li>
+                <img src="../assets/images/selectBag/4.png">
+              </li>
+              <!--<li>-->
+                <!--<img src="../assets/images/selectBag/4.png">-->
+              <!--</li>-->
+            </ul>
+          </div>
+        </div>
+        <div class="leftPart" v-if="this.$route.query.type == '5'">
+          <p>中封袋</p>
+          <p>MIDDLE SEALING BAG</p>
+          <div class="imgBox">
+            <img src="../assets/images/selectBag/5.png">
+          </div>
+          <div class="descBox">
+            <p class="title">
+              袋形描述
+            </p>
+            <p>XXXXXXXXXXXXXXXXXXXXXXX</p>
+          </div>
+          <div class="selectImg">
+            <ul>
+              <li>
+                <img src="../assets/images/selectBag/5.png">
+              </li>
+              <li>
+                <img src="../assets/images/selectBag/5.png">
+              </li>
+              <li>
+                <img src="../assets/images/selectBag/5.png">
+              </li>
+              <!--<li>-->
+                <!--<img src="../assets/images/selectBag/5.png">-->
+              <!--</li>-->
             </ul>
           </div>
         </div>
@@ -195,7 +311,7 @@
             </div>
           </div>
           <div class="flooter">
-            <div class="buttonStyle">
+            <div class="buttonStyle" @click="addToCar">
               显示汇总 >
             </div>
           </div>
@@ -303,6 +419,10 @@ export default {
       reads.onload = (e) => {
         this.upLoadImgShowList.push(e.target.result)
       }
+    },
+    // 汇总显示
+    addToCar () {
+        this.$router.push({path: '/addToCar'});
     }
   },
   created () {
@@ -332,6 +452,7 @@ export default {
       padding-right: 140px;
       .imgBox {
         margin: 50px 10px;
+        text-align: center;
       }
       .descBox {
         .title {

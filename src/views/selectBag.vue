@@ -3,8 +3,8 @@
     <PackageSteps />
     <div class="content">
       <div class="body">
-        <div class="choseWrap">
-          <img src="../assets/img/type_4.png">
+        <div class="choseWrap" @click="configureBags(1)">
+          <img src="../assets/images/selectBag/1.png">
           <div class="descBox">
             <p>三边封</p>
             <p>ORGAN BAG</p>
@@ -12,19 +12,37 @@
           </div>
           <p class="desc_content">SYNPAX由拥有30年行业经验的资深专家研发E-PACKAGING致力于简化定制包装流程。</p>
         </div>
-        <div class="choseWrap">
-          <img src="../assets/img/type_4.png">
+        <div class="choseWrap" @click="configureBags(2)">
+          <img src="../assets/images/selectBag/2.png">
           <div class="descBox">
-            <p>三边封</p>
+            <p>三边封立底袋</p>
             <p>ORGAN BAG</p>
             <p class="desc_title">袋形描述</p>
           </div>
           <p class="desc_content">SYNPAX由拥有30年行业经验的资深专家研发E-PACKAGING致力于简化定制包装流程。</p>
         </div>
-        <div class="choseWrap">
-          <img src="../assets/img/type_4.png">
+        <div class="choseWrap" @click="configureBags(3)">
+          <img src="../assets/images/selectBag/3.png">
           <div class="descBox">
-            <p>三边封</p>
+            <p>四边封</p>
+            <p>ORGAN BAG</p>
+            <p class="desc_title">袋形描述</p>
+          </div>
+          <p class="desc_content">SYNPAX由拥有30年行业经验的资深专家研发E-PACKAGING致力于简化定制包装流程。</p>
+        </div>
+        <div class="choseWrap" @click="configureBags(4)">
+          <img src="../assets/images/selectBag/4.png">
+          <div class="descBox">
+            <p>八边封</p>
+            <p>ORGAN BAG</p>
+            <p class="desc_title">袋形描述</p>
+          </div>
+          <p class="desc_content">SYNPAX由拥有30年行业经验的资深专家研发E-PACKAGING致力于简化定制包装流程。</p>
+        </div>
+        <div class="choseWrap" @click="configureBags(5)">
+          <img src="../assets/images/selectBag/5.png">
+          <div class="descBox">
+            <p>中封袋</p>
             <p>ORGAN BAG</p>
             <p class="desc_title">袋形描述</p>
           </div>
@@ -45,6 +63,11 @@ export default {
   },
   created () {
     this.$store.dispatch('changeSteps', 'selectBag')
+  },
+  methods: {
+      configureBags(type) {
+          this.$router.push({path: '/configureBags',query: {type}});
+      },
   }
 }
 </script>

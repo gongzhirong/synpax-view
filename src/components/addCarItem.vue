@@ -8,7 +8,7 @@
         </span>
       </div>
       <div class="imgBox">
-        <img src="../assets/img/type_4.png">
+        <img src="../assets/images/selectBag/2.png">
       </div>
       <div class="descBox">
         <p class="title">

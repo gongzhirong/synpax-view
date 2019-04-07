@@ -7,7 +7,7 @@
           <p>膜</p>
           <p>OPGAN BAG</p>
           <div class="imgBox">
-            <img src="../assets/img/type_4.png">
+            <img src="../assets/img/membrane.png">
           </div>
           <div class="descBox">
             <p class="title">
@@ -18,17 +18,17 @@
           <div class="selectImg">
             <ul>
               <li>
-                <img src="../assets/img/type_4.png">
+                <img src="../assets/img/membrane.png">
               </li>
               <li>
-                <img src="../assets/img/type_4.png">
+                <img src="../assets/img/membrane.png">
               </li>
               <li>
-                <img src="../assets/img/type_4.png">
+                <img src="../assets/img/membrane.png">
               </li>
-              <li>
-                <img src="../assets/img/type_4.png">
-              </li>
+              <!--<li>-->
+                <!--<img src="../assets/img/membrane.png">-->
+              <!--</li>-->
             </ul>
           </div>
         </div>
@@ -111,7 +111,7 @@
             </div>
           </div>
           <div class="flooter">
-            <div class="buttonStyle">
+            <div class="buttonStyle" @click="addToCar">
               显示汇总 >
             </div>
           </div>
@@ -229,6 +229,10 @@ export default {
       reads.onload = (e) => {
         this.upLoadImgShowList.push(e.target.result)
       }
+    },
+    // 汇总显示
+    addToCar () {
+        this.$router.push({path: '/addToCar'});
     }
   },
   created () {
@@ -258,6 +262,7 @@ export default {
       padding-right: 140px;
       .imgBox {
         margin: 50px 10px;
+        text-align: center;
       }
       .descBox {
         .title {
