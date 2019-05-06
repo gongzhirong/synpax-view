@@ -79,7 +79,7 @@
             <!-- 自定义 -->
             <div class="importCard" :class="{active: importCardTitleFour}">
               <div class="importCardTitle" @click="importCardTitleFour = !importCardTitleFour">
-                <span>材质</span>
+                <span>自定义</span>
                 <span class="arrow"></span>
               </div>
               <div class="importCardContent" v-show="importCardTitleFour">

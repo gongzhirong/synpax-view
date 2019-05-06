@@ -183,7 +183,7 @@
               </div>
               <div class="importCardContent" v-show="importCardTitleOne">
                 <div class="selectBox">
-                  <span v-for="option in bagContentList" class="selectOtion" :class="{active: data.prop1 === option.value}" @click="data.prop1 = option.value" :key="option.value">{{option.label}}</span>
+                  <span v-for="option in bagContentList" class="selectOtion" :class="{active: data.prop1.indexOf(option.value) > -1}" @click="selectBagContent(option.value)" :key="option.value">{{option.label}}</span>
                 </div>
                 <div style="margin-top: 2px;">
                   <textarea rows="4" class="textareaStyle" placeholder="内容物描述">
@@ -227,7 +227,7 @@
               </div>
               <div class="importCardContent" v-show="importCardTitleFour">
                 <div class="selectBox">
-                  <span v-for="option in surfaceContentList" class="selectOtion" :class="{active: data.prop3 === option.value}" @click="data.prop3 = option.value" :key="option.value">{{option.label}}</span>
+                  <span v-for="option in surfaceContentList" class="selectOtion" :class="{active: data.prop3.indexOf(option.value) > -1}" @click="selectSurfaceContent(option.value)" :key="option.value">{{option.label}}</span>
                 </div>
               </div>
             </div>
@@ -239,7 +239,7 @@
               </div>
               <div class="importCardContent" v-show="importCardTitleFive">
                 <div class="selectBox">
-                  <span v-for="option in openingContentList" class="selectOtion" :class="{active: data.prop4 === option.value}" @click="data.prop4 = option.value" :key="option.value">{{option.label}}</span>
+                  <span v-for="option in openingContentList" class="selectOtion" :class="{active: data.prop4.indexOf(option.value) > -1}" @click="selectOpeningContent(option.value)" :key="option.value">{{option.label}}</span>
                 </div>
               </div>
             </div>
@@ -262,39 +262,40 @@
                 <span class="arrow"></span>
               </div>
               <div class="importCardContent" v-show="importCardTitleSeven">
-                <div class="row">
+                <div class="row" style="position: relative;">
+                  <span style="color: red;font-size: 48px;position: absolute;left: -28px;top: -8px;">*</span>
                   <div class="rowItem">
-                    <SelectComponent v-model="data.prop6">
+                    <SelectComponent v-model="data.prop6.type">
                       <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
                     </SelectComponent>
                   </div>
                   <div class="rowItem">
-                    <input type="" name="">mm
+                    <input type="" name="" v-model="data.prop6.num">mm
                   </div>
                 </div>
                 <div class="row">
                   <div class="rowItem">
-                    <SelectComponent v-model="data.prop7">
+                    <SelectComponent v-model="data.prop7.type">
                       <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
                     </SelectComponent>
                   </div>
                   <div class="rowItem">
-                    <input type="" name="">mm
+                    <input type="" name="" v-model="data.prop7.num">mm
                   </div>
                 </div>
                 <div class="row">
                   <div class="rowItem">
-                    <SelectComponent v-model="data.prop8">
+                    <SelectComponent v-model="data.prop8.type">
                       <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
                     </SelectComponent>
                   </div>
                   <div class="rowItem">
-                    <input type="" name="">mm
+                    <input type="" name="" v-model="data.prop8.num">mm
                   </div>
                 </div>
                 <div class="row">
                   <div class="rowItem">
-                    <SelectComponent v-model="data.prop9">
+                    <SelectComponent v-model="data.prop9.type">
                       <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
                     </SelectComponent>
                   </div>
@@ -331,15 +332,15 @@ export default {
       // 配置信息
       data: {
         type: 1,
-        prop1: false,
+        prop1: [],
         prop2: false,
-        prop3: false,
-        prop4: false,
+        prop3: [],
+        prop4: [],
         prop5: false,
-        prop6: '',
-        prop7: '',
-        prop8: '',
-        prop9: ''
+        prop6: {type: '', num: ''},
+        prop7: {type: '', num: ''},
+        prop8: {type: '', num: ''},
+        prop9: {type: '', num: ''}
       },
       upLoadImgShowList: [],
       importCardTitleOne: true,
@@ -408,6 +409,33 @@ export default {
     Option
   },
   methods: {
+    // 选择内容物
+    selectBagContent (value) {
+      let index = this.data.prop1.indexOf(value)
+      if ( index > -1) {
+        this.data.prop1.splice(index, 1)
+      } else {
+        this.data.prop1.push(value)
+      }
+    },
+    // 选择表面
+    selectSurfaceContent (value) {
+      let index = this.data.prop3.indexOf(value)
+      if ( index > -1) {
+        this.data.prop3.splice(index, 1)
+      } else {
+        this.data.prop3.push(value)
+      }
+    },
+    // 选择开口方式
+    selectOpeningContent (value) {
+      let index = this.data.prop4.indexOf(value)
+      if ( index > -1) {
+        this.data.prop4.splice(index, 1)
+      } else {
+        this.data.prop4.push(value)
+      }
+    },
     // 图片上传
     openUpload () {
       this.$refs.uploadInput.click()
@@ -422,7 +450,17 @@ export default {
     },
     // 汇总显示
     addToCar () {
-        this.$router.push({path: '/addToCar'});
+      // 配置校验
+      // 材质第一项必填，其他三项不必填可以选择无，当只选第一项，其他三项为空或者无时，只能选PE或者PE结尾的选项
+      if (!this.data.prop6.type) {
+        return this.$Message('材质第一项为必填')
+      } else if (!this.data.prop7.type && !this.data.prop8.type && !this.data.prop9.type) {
+        let pePro = ['4', '8', '10', '12']
+        if (pePro.indexOf(this.data.prop6.type) < 0) {
+          return this.$Message('材质只选一项时，只能选PE或者PE结尾材质')
+        }
+      }
+      this.$router.push({path: '/addToCar'});
     }
   },
   created () {

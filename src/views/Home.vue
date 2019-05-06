@@ -282,7 +282,8 @@ export default {
       position: relative;
   }
     .detail_wrap {
-        width: 1640px;
+        width: 1400px;
+        margin: 0 auto;
         margin-top: 48px;
         overflow: hidden;
     }
@@ -313,14 +314,14 @@ export default {
     }
 
     .detai_type_1 {
-        width: 540px;
+        width: 460px;
         /*height: 1148px;*/
         float: left;
         margin-right: 10px;
     }
 
     .type_1_1 {
-        width: 540px;
+        width: 460px;
         height: 797px;
         margin-bottom: 10px;
         position: relative;
@@ -328,7 +329,7 @@ export default {
     }
 
     .type_1_2 {
-        width: 540px;
+        width: 460px;
         height: 331px;
         margin-bottom: 10px;
         position: relative;
@@ -337,7 +338,7 @@ export default {
     }
 
     .type_1_3 {
-        width: 540px;
+        width: 460px;
         height: 797px;
         margin-bottom: 10px;
         position: relative;
@@ -360,14 +361,14 @@ export default {
     }
 
     .detai_type_2 {
-        width: 540px;
+        width: 460px;
         /*height: 1148px;*/
         float: left;
         margin-right: 10px;
     }
 
     .type_2_1 {
-        width: 540px;
+        width: 460px;
         height: 402px;
         margin-bottom: 10px;
         position: relative;
@@ -375,7 +376,7 @@ export default {
     }
 
     .type_2_2 {
-        width: 540px;
+        width: 460px;
         height: 385px;
         margin-bottom: 10px;
         position: relative;
@@ -424,7 +425,7 @@ export default {
     }
 
     .type_2_3 {
-        width: 540px;
+        width: 460px;
         height: 331px;
         margin-bottom: 10px;
         position: relative;
@@ -432,7 +433,7 @@ export default {
     }
 
     .type_2_4 {
-        width: 540px;
+        width: 460px;
         height: 393px;
         margin-bottom: 11px;
         position: relative;
@@ -441,7 +442,7 @@ export default {
     }
 
     .type_2_5 {
-        width: 540px;
+        width: 460px;
         height: 393px;
         margin-bottom: 10px;
         position: relative;
@@ -453,13 +454,13 @@ export default {
     }
 
     .detai_type_3 {
-        width: 540px;
+        width: 460px;
         /*height: 1148px;*/
         float: left;
     }
 
     .type_3_1 {
-        width: 540px;
+        width: 460px;
         height: 331px;
         margin-bottom: 10px;
         position: relative;
@@ -468,7 +469,7 @@ export default {
     }
 
     .type_3_2 {
-        width: 540px;
+        width: 460px;
         height: 797px;
         margin-bottom: 10px;
         position: relative;
@@ -479,7 +480,7 @@ export default {
     }
 
     .type_3_3 {
-        width: 540px;
+        width: 460px;
         height: 393px;
         margin-bottom: 11px;
         position: relative;
@@ -491,7 +492,7 @@ export default {
     }
 
     .type_3_4 {
-        width: 540px;
+        width: 460px;
         height: 393px;
         margin-bottom: 10px;
         position: relative;

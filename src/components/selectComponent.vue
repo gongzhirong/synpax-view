@@ -1,6 +1,6 @@
 <template>
   <div class="selectComponent">
-    <div class="currentSelectOption">{{current.label}}</div>
+    <div class="currentSelectOption">{{current.label || '&nbsp;'}}</div>
     <div class="buttonBox" @click="open = !open">
       <span class="triangle"></span>
     </div>
