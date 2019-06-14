@@ -1,4 +1,4 @@
-# synpax-view
+# synpax-view (包装定制官网)
 
 ## Project setup
 ```
