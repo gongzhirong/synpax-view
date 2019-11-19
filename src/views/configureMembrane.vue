@@ -374,8 +374,8 @@ export default {
             padding: 0 40px 16px;
 
             .arrow {
-              float: right;
               display: inline-block;
+              float: right;
               width: 16px;
               height: 16px;
               margin-top: 12px;
