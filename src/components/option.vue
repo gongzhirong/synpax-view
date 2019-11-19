@@ -1,5 +1,5 @@
 <template>
-  <li @click="selected">{{label}}</li>
+  <li class="selectOtion" @click="selected" :data-value="value">{{label}}</li>
 </template>
 <script>
 export default {
@@ -28,3 +28,6 @@ export default {
   }
 }
 </script>
+<style lang="less" scoped>
+li { list-style: none; }
+</style>

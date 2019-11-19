@@ -29,7 +29,7 @@
             </ul>
           </div>
         </div>
-        <div class="leftPart" v-else-if="this.$route.query.type == '2'">
+        <div class="leftPart" v-if="this.$route.query.type == '2'">
           <p>三边封立底袋</p>
           <p>THREE SIDE BOTTOM BAGS</p>
           <div class="imgBox">
@@ -52,10 +52,13 @@
               <li>
                 <img src="../assets/images/selectBag/2.png">
               </li>
+              <!--<li>-->
+                <!--<img src="../assets/images/selectBag/2.png">-->
+              <!--</li>-->
             </ul>
           </div>
         </div>
-        <div class="leftPart" v-else-if="this.$route.query.type == '3'">
+        <div class="leftPart" v-if="this.$route.query.type == '3'">
           <p>四边封</p>
           <p>FOUR SIDE SEALING</p>
           <div class="imgBox">
@@ -78,10 +81,13 @@
               <li>
                 <img src="../assets/images/selectBag/3.png">
               </li>
+              <!--<li>-->
+                <!--<img src="../assets/images/selectBag/3.png">-->
+              <!--</li>-->
             </ul>
           </div>
         </div>
-        <div class="leftPart" v-else-if="this.$route.query.type == '4'">
+        <div class="leftPart" v-if="this.$route.query.type == '4'">
           <p>八边封</p>
           <p>EIGHT SIDE SEALING</p>
           <div class="imgBox">
@@ -107,7 +113,7 @@
             </ul>
           </div>
         </div>
-        <div class="leftPart" v-else-if="this.$route.query.type == '5'">
+        <div class="leftPart" v-if="this.$route.query.type == '5'">
           <p>中封袋</p>
           <p>MIDDLE SEALING BAG</p>
           <div class="imgBox">
@@ -130,12 +136,12 @@
               <li>
                 <img src="../assets/images/selectBag/5.png">
               </li>
+              <!--<li>-->
+                <!--<img src="../assets/images/selectBag/5.png">-->
+              <!--</li>-->
             </ul>
           </div>
         </div>
-
-
-        <!-- 配置主要部分 -->
         <div class="rightPart">
           <div class="overviewTitle">
             <img class="imgList" src="../assets/img/list.png">
@@ -143,41 +149,13 @@
               <span>概览</span>
             </p>
           </div>
-
-          <div class="overviewContent">
-            <!-- 打孔样式 -->
-            <Collapse title="打孔样式">
-              <ButtonRadio v-model="data.punchStyle" row=2>
-                <Option v-for="option in punchStyleList" :value="option.value" :label="option.label" :key="option.value"></Option>
-              </ButtonRadio>
-            </Collapse>
-
-            <!-- 试用环境 -->
-            <Collapse title="试用环境">
-              <ButtonRadio v-model="data.trialEnvironment" row=2>
-                <Option v-for="option in trialEnvironmentList" :value="option.value" :label="option.label" :key="option.value"></Option>
-              </ButtonRadio>
-            </Collapse>
-
-            <!-- 罐装条件 -->
-            <Collapse title="罐装条件">
-              <ButtonRadio v-model="data.canningRequirement" row=2>
-                <Option v-for="option in canningRequirementList" :value="option.value" :label="option.label" :key="option.value"></Option>
-              </ButtonRadio>
-            </Collapse>
-
-            <!-- 内容物属性 -->
-            <Collapse title="内容物属性" type="gray">
-              <ButtonRadio v-model="data.canningRequirement" row=2 type=empty>
-                <Option v-for="option in canningRequirementList" :value="option.value" :label="option.label" :key="option.value"></Option>
-              </ButtonRadio>
-            </Collapse>
+          <div class="selectType">
+            <p :class="{selected: data.type === 1}" @click="data.type = 1">内包装</p>
+            <p :class="{selected: data.type === 2}" @click="data.type = 2">外包装</p>
           </div>
-          
-
           <div class="rightPartContent">
             <div class="rightPartTitle">
-              <span>内容物属性</span>
+              <span>属性</span>
             </div>
             <div class="sizeImport">
               <label for="height">
@@ -340,18 +318,13 @@
 <script>
 import PackageSteps from '../components/packageSteps.vue'
 import SelectComponent from '../components/selectComponent.vue'
-import Option from '../components/Option.vue'
-import Collapse from '../components/Collapse.vue'
-import ButtonRadio from '../components/ButtonRadio'
+import Option from '../components/option.vue'
 export default {
   name: 'configureBags',
   data () {
     return {
       // 配置信息
       data: {
-        punchStyle: '1', // 打孔样式
-        trialEnvironment: '', // 试用环境
-        canningRequirement: '', // 罐装条件
         type: 1,
         prop1: [],
         prop2: false,
@@ -363,24 +336,6 @@ export default {
         prop8: {type: '', num: ''},
         prop9: {type: '', num: ''}
       },
-      punchStyleList: [ // 打孔样式选项列表
-        { label: '飞机孔', value: '1' },
-        { label: '圆孔', value: '2' },
-        { label: '不打孔孔', value: '3' },
-      ],
-      trialEnvironmentList: [ // 试用环境选项列表
-        { label: '冷冻', value: '1' },
-        { label: '常温', value: '2' },
-        { label: '蒸煮110°-121°', value: '3' },
-        { label: '水煮≤100°', value: '4' },
-      ],
-      canningRequirementList: [ // 罐装条件选项列表
-        { label: '抽真空', value: '1' },
-        { label: '充气', value: '2' },
-        { label: '机器罐装', value: '3' },
-        { label: '手工罐装', value: '4' },
-      ],
-      // -------------------------------------------------------------------------------TODO
       upLoadImgShowList: [],
       importCardTitleOne: true,
       importCardTitleTwo: true,
@@ -423,7 +378,7 @@ export default {
       holeContentList: [
         { label: '飞机孔', value: '1' },
         { label: '圆孔', value: '2' },
-        { label: '不打孔孔', value: '3' }
+        { label: '异形孔', value: '3' }
       ],
       textureContentList: [
         { label: 'BOPA', value: '1' },
@@ -445,9 +400,7 @@ export default {
   components: {
     PackageSteps,
     SelectComponent,
-    Option,
-    Collapse,
-    ButtonRadio,
+    Option
   },
   methods: {
     // 选择内容物
@@ -554,10 +507,6 @@ export default {
     }
     .rightPart {
       flex: 1;
-      
-      .overviewContent {
-        padding: 0 32px;
-      }
 
       .overviewTitle {
         background-color: #A0A0A0;
@@ -600,12 +549,12 @@ export default {
       }
 
       .rightPartContent {
-        padding: 0 32px;
+        padding: 0 10px;
         margin-bottom: 16px;
 
         .rightPartTitle {
           background-color: #a0a0a0;
-          padding: 13px 20px;
+          padding: 13px 42px;
           color: white;
         }
 
@@ -690,23 +639,23 @@ export default {
     }
   }
 
-  // .selectBox {
-  //   display: flex;
-  //   flex-wrap: wrap;
-  //   flex-direction: row;
-  //   .selectOtion {
-  //     cursor: pointer;
-  //     background-color: #E5E5E5;
-  //     margin: 0 1% 15px;
-  //     line-height: 65px;
-  //     text-align: center;
-  //     width: 23%;
-  //     &.active {
-  //       background-color: #a0a0a0;
-  //       color: white;
-  //     }
-  //   }
-  // }
+  .selectBox {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    .selectOtion {
+      cursor: pointer;
+      background-color: #E5E5E5;
+      margin: 0 1% 15px;
+      line-height: 65px;
+      text-align: center;
+      width: 23%;
+      &.active {
+        background-color: #a0a0a0;
+        color: white;
+      }
+    }
+  }
 
   .textareaStyle {
     width: 100%;

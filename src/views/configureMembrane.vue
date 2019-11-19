@@ -123,7 +123,7 @@
 <script>
 import PackageSteps from '../components/packageSteps.vue'
 import SelectComponent from '../components/selectComponent.vue'
-import Option from '../components/option.vue'
+import Option from '../components/Option.vue'
 export default {
   name: 'configureMembrane',
   data () {
