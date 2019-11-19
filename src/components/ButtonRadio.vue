@@ -60,6 +60,19 @@ export default {
         let dom = optionList[i]
         dom.style.width = `${93 / this.row}%`
       }
+
+      // 解决flex布局不够一行钟健空白问题
+      let count = optionList.length % this.row
+      if (count !== 0) {
+        const temp = document.createDocumentFragment()
+        for (let i = 0; i < (this.row - count); i++) {
+          const emptyLi = document.createElement('li')
+          emptyLi.style.listStyle = 'none'
+          emptyLi.style.width = `${93 / this.row}%`
+          temp.appendChild(emptyLi)
+        }
+        this.$refs.option.appendChild(temp)
+      }
     },
     seleted (data) {
       this.$emit('change', data.value)

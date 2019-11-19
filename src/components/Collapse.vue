@@ -58,7 +58,7 @@ export default {
   }
 
   .importCardContent {
-    padding: 26px 40px 0;
+    padding: 26px 0 0;
   }
 
   &.active {

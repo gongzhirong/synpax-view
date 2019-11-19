@@ -168,9 +168,51 @@
 
             <!-- 内容物属性 -->
             <Collapse title="内容物属性" type="gray">
-              <ButtonRadio v-model="data.canningRequirement" row=2 type=empty>
-                <Option v-for="option in canningRequirementList" :value="option.value" :label="option.label" :key="option.value"></Option>
-              </ButtonRadio>
+              <div class="cu-box">
+                <div class="cu-box-title">
+                  液态
+                </div>
+                <div class="cu-box-content">
+                  <ButtonRadio v-model="data.liquidContent" row=3 type=empty>
+                    <Option v-for="option in liquidContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
+                  </ButtonRadio>
+                </div>
+              </div>
+
+              <div class="cu-box">
+                <div class="cu-box-title">
+                  固态
+                </div>
+                <div class="cu-box-content">
+                  <ButtonRadio v-model="data.solidContent" row=3 type=empty>
+                    <Option v-for="option in solidContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
+                  </ButtonRadio>
+                </div>
+              </div>
+
+              <div class="cu-box">
+                <div class="cu-box-title">
+                  固液混合
+                </div>
+                <div class="cu-box-content">
+                  <ButtonRadio v-model="data.solidLiquidContent" row=3 type=empty>
+                    <Option v-for="option in solidLiquidContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
+                  </ButtonRadio>
+                </div>
+              </div>
+
+              <div class="upLoadBox">
+                <div class="upLoadBox-title">上传内容物图片</div>
+                <div class="uploadBox-content">
+                  <div class="imgLi" v-for="img in upLoadImgShowList" :key="img">
+                    <img :src="img">
+                  </div>
+                  <div class="uploadButton" @click="openUpload">
+                    <span>+</span>
+                    <input ref="uploadInput" type="file" accept="image/*" class="uploadInput" @change="getDataPic">
+                  </div>
+                </div>
+              </div>
             </Collapse>
           </div>
           
@@ -352,6 +394,9 @@ export default {
         punchStyle: '1', // 打孔样式
         trialEnvironment: '', // 试用环境
         canningRequirement: '', // 罐装条件
+        liquidContent: '', // 内容物-液体
+        solidContent: '', // 内容物-固态
+        solidLiquidContent: '', // 内容物-固液混合
         type: 1,
         prop1: [],
         prop2: false,
@@ -379,6 +424,28 @@ export default {
         { label: '充气', value: '2' },
         { label: '机器罐装', value: '3' },
         { label: '手工罐装', value: '4' },
+      ],
+      liquidContentList: [ // 内容物-液体选项列表
+        { label: '油', value: '1' },
+        { label: '辣', value: '2' },
+        { label: '酸', value: '3' },
+        { label: '碱', value: '4' },
+        { label: '腐', value: '5' },
+      ],
+      solidContentList: [ // 内容物-固态选项列表
+        { label: '粉', value: '1' },
+        { label: '尖', value: '2' },
+        { label: '酸', value: '3' },
+        { label: '碱', value: '4' },
+        { label: '腐', value: '5' },
+      ],
+      solidLiquidContentList: [ // 内容物-固液混合
+        { label: '粉', value: '1' },
+        { label: '尖', value: '2' },
+        { label: '酸', value: '3' },
+        { label: '碱', value: '4' },
+        { label: '腐', value: '5' },
+        { label: '辣', value: '6' },
       ],
       // -------------------------------------------------------------------------------TODO
       upLoadImgShowList: [],
@@ -511,6 +578,33 @@ export default {
 </script>
 <style lang="less">
 .configureBags {
+  .upLoadBox {
+    padding: 0 12px 48px;
+    color: #000;
+  }
+  .upLoadBox-title {
+    padding: 15px 0;
+  }
+  .uploadBox-content {
+    padding: 0 12px;
+  }
+  .cu-box {
+    padding: 0 10px;
+    color: #000;
+  }
+  .cu-box-title {
+    font-size: 22px;
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+    margin-top: 18px;
+    text-indent: 12px;
+    border-bottom: 1px solid #000;
+  }
+
+  .cu-box-content {
+    padding: 8px 18px;
+  }
+
   .bg {
     background-color: #F5F5F5;
     padding-top: 22px;
@@ -736,11 +830,10 @@ export default {
     width: 60px;
     height: 60px;
     padding: 14px;
-    background-color: #E5E5E5;
-    border: 1px solid #E9E9E9;
+    background-color: #fff;
 
     span {
-      color: white;
+      color: #000;
       display: inline-block;
       width: 56px;
       height: 56px;
@@ -748,7 +841,7 @@ export default {
       font-size: 50px;
       line-height: 48px;
       text-align: center;
-      border: 2px dashed white;
+      border: 2px dashed #d8d8d8;
     }
 
     .uploadInput {
