@@ -38,7 +38,7 @@ export default {
     margin: 16px auto 0;
     background-color: white;
     box-sizing: border-box;
-    padding: 50px;
+    padding: 120px;
     background: linear-gradient(140deg, transparent 38px, #fff 0);
     text-align: center;
 

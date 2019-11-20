@@ -214,160 +214,25 @@
                 </div>
               </div>
             </Collapse>
-          </div>
-          
 
-          <div class="rightPartContent">
-            <div class="rightPartTitle">
-              <span>内容物属性</span>
-            </div>
-            <div class="sizeImport">
-              <label for="height">
-                <span class="labelName">高</span>
-                <span class="circular">1</span>
-                <input id="height" v-model="data.height">
-              </label>
-              <label for="height">
-                <span class="labelName">宽</span>
-                <span class="circular">2</span>
-                <input id="height" v-model="data.weight">
-              </label>
-            </div>
-            <!-- 内容物 -->
-            <div class="importCard" :class="{active: importCardTitleOne}">
-              <div class="importCardTitle" @click="importCardTitleOne = !importCardTitleOne">
-                <span>内容物</span>
-                <span class="arrow" ></span>
-              </div>
-              <div class="importCardContent" v-show="importCardTitleOne">
-                <div class="selectBox">
-                  <span v-for="option in bagContentList" class="selectOtion" :class="{active: data.prop1.indexOf(option.value) > -1}" @click="selectBagContent(option.value)" :key="option.value">{{option.label}}</span>
-                </div>
-                <div style="margin-top: 2px;">
-                  <textarea rows="4" class="textareaStyle" placeholder="内容物描述">
-                  </textarea>
-                </div>
-                <!-- 上传区域 -->
-                <p style="margin-top: 10px;margin-bottom: 5px;">上传内容物图片</p>
-                <div class="uploadBox">
-                  <div class="imgLi" v-for="img in upLoadImgShowList" :key="img">
-                    <img :src="img">
-                  </div>
-                  <div class="uploadButton" @click="openUpload">
-                    <span>+</span>
-                    <input ref="uploadInput" type="file" accept="image/*" class="uploadInput" @change="getDataPic">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 场景 -->
-            <div class="importCard" :class="{active: importCardTitleTwo}">
-              <div class="importCardTitle" @click="importCardTitleTwo = !importCardTitleTwo">
-                <span>场景</span>
-                <span class="arrow"></span>
-              </div>
-              <div class="importCardContent" v-show="importCardTitleTwo">
-                <div class="selectBox">
-                  <span v-for="option in sceneContentList" class="selectOtion" :class="{active: data.prop2 === option.value}" @click="data.prop2 = option.value" :key="option.value">{{option.label}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="rightPartContent">
-            <div class="rightPartTitle">
-              <span>工艺</span>
-            </div>
-            <!-- 表面 -->
-            <div class="importCard" :class="{active: importCardTitleFour}">
-              <div class="importCardTitle" @click="importCardTitleFour = !importCardTitleFour">
-                <span>表面</span>
-                <span class="arrow" ></span>
-              </div>
-              <div class="importCardContent" v-show="importCardTitleFour">
-                <div class="selectBox">
-                  <span v-for="option in surfaceContentList" class="selectOtion" :class="{active: data.prop3.indexOf(option.value) > -1}" @click="selectSurfaceContent(option.value)" :key="option.value">{{option.label}}</span>
-                </div>
-              </div>
-            </div>
-            <!-- 开口方式 -->
-            <div class="importCard" :class="{active: importCardTitleFive}">
-              <div class="importCardTitle" @click="importCardTitleFive = !importCardTitleFive">
-                <span>开口方式</span>
-                <span class="arrow"></span>
-              </div>
-              <div class="importCardContent" v-show="importCardTitleFive">
-                <div class="selectBox">
-                  <span v-for="option in openingContentList" class="selectOtion" :class="{active: data.prop4.indexOf(option.value) > -1}" @click="selectOpeningContent(option.value)" :key="option.value">{{option.label}}</span>
-                </div>
-              </div>
-            </div>
-            <!-- 挂孔 -->
-            <div class="importCard" :class="{active: importCardTitleSix}">
-              <div class="importCardTitle" @click="importCardTitleSix = !importCardTitleSix">
-                <span>挂孔</span>
-                <span class="arrow"></span>
-              </div>
-              <div class="importCardContent" v-show="importCardTitleSix">
-                <div class="selectBox">
-                  <span v-for="option in holeContentList" class="selectOtion" :class="{active: data.prop5 === option.value}" @click="data.prop5 = option.value" :key="option.value">{{option.label}}</span>
-                </div>
-              </div>
-            </div>
-            <!-- 材质 -->
-            <div class="importCard" :class="{active: importCardTitleSeven}">
-              <div class="importCardTitle" @click="importCardTitleSeven = !importCardTitleSeven">
-                <span>材质</span>
-                <span class="arrow"></span>
-              </div>
-              <div class="importCardContent" v-show="importCardTitleSeven">
-                <div class="row" style="position: relative;">
-                  <span style="color: red;font-size: 48px;position: absolute;left: -28px;top: -8px;">*</span>
-                  <div class="rowItem">
-                    <SelectComponent v-model="data.prop6.type">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
-                    </SelectComponent>
-                  </div>
-                  <div class="rowItem">
-                    <input type="" name="" v-model="data.prop6.num">mm
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="rowItem">
-                    <SelectComponent v-model="data.prop7.type">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
-                    </SelectComponent>
-                  </div>
-                  <div class="rowItem">
-                    <input type="" name="" v-model="data.prop7.num">mm
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="rowItem">
-                    <SelectComponent v-model="data.prop8.type">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
-                    </SelectComponent>
-                  </div>
-                  <div class="rowItem">
-                    <input type="" name="" v-model="data.prop8.num">mm
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="rowItem">
-                    <SelectComponent v-model="data.prop9.type">
-                      <Option v-for="option in textureContentList" :value="option.value" :label="option.label" :key="option.value"></Option>
-                    </SelectComponent>
-                  </div>
-                  <div class="rowItem">
-                    <input type="" name="">mm
-                  </div>
-                </div>
+            <!-- 阻隔性要求 -->
+            <Collapse title="阻隔性要求">
+              <ButtonRadio v-model="data.barrierRequirement" row=2>
+                <Option v-for="option in barrierRequirementList" :value="option.value" :label="option.label" :key="option.value"></Option>
+              </ButtonRadio>
+            </Collapse>
 
-                <div class="remark">
-                  <span style="margin: 0 6px 0 30px;">备注</span>
-                  <input v-model="data.remark">
-                </div>
-              </div>
-            </div>
+            <!-- 材质偏好 -->
+            <Collapse title="材质偏好">
+              <ButtonRadio v-model="data.material" row=3>
+                <Option v-for="option in materialList" :value="option.value" :label="option.label" :key="option.value"></Option>
+              </ButtonRadio>
+            </Collapse>
+
+            <!-- 备注 -->
+            <Collapse title="备注">
+              <textarea rows="4" class="textareaStyle" placeholder="内容物描述" v-model="data.contentDesc"></textarea>
+            </Collapse>
           </div>
           <div class="flooter">
             <div class="buttonStyle" @click="addToCar">
@@ -397,6 +262,9 @@ export default {
         liquidContent: '', // 内容物-液体
         solidContent: '', // 内容物-固态
         solidLiquidContent: '', // 内容物-固液混合
+        barrierRequirement: '', // 阻隔性要求
+        material: '', // 材质偏好
+        contentDesc: '', // 内容物描述
         type: 1,
         prop1: [],
         prop2: false,
@@ -447,66 +315,20 @@ export default {
         { label: '腐', value: '5' },
         { label: '辣', value: '6' },
       ],
+      barrierRequirementList: [ // 阻隔性要求选项列表
+        { label: '极高（2年内）', value: '1' },
+        { label: '高（1年内）', value: '2' },
+        { label: '通用（6个月）', value: '3' },
+        { label: '无', value: '4' },
+      ],
+      materialList: [ // 材质偏好选项列表
+        { label: '塑塑复合', value: '1' },
+        { label: '铝塑复合', value: '2' },
+        { label: '纸塑复合', value: '3' },
+        { label: '可降解', value: '4' },
+      ],
       // -------------------------------------------------------------------------------TODO
       upLoadImgShowList: [],
-      importCardTitleOne: true,
-      importCardTitleTwo: true,
-      importCardTitleThree: true,
-      importCardTitleFour: true,
-      importCardTitleFive: true,
-      importCardTitleSix: true,
-      importCardTitleSeven: true,
-      // 内容物选择项
-      bagContentList: [
-        { label: '油', value: '1' },
-        { label: '辣', value: '2' },
-        { label: '酸', value: '3' },
-        { label: '碱', value: '4' },
-        { label: '粉', value: '5' }
-      ],
-      // 场景选择项
-      sceneContentList: [
-        { label: '速冻', value: '1' },
-        { label: '常温', value: '2' },
-        { label: '水煮', value: '3' },
-        { label: '蒸煮', value: '4' }
-      ],
-      // 表面选择项
-      surfaceContentList: [
-        { label: '洗铝', value: '1' },
-        { label: '阴阳', value: '2' },
-        { label: '拉链', value: '3' },
-        { label: '哑光', value: '4' },
-        { label: '镭射', value: '5' },
-        { label: '开窗', value: '6' }
-      ],
-      // 开口方式
-      openingContentList: [
-        { label: '拉链', value: '1' },
-        { label: '易撕口', value: '2' },
-        { label: '拉骨', value: '3' },
-        { label: '侧拉链', value: '4' }
-      ],
-      holeContentList: [
-        { label: '飞机孔', value: '1' },
-        { label: '圆孔', value: '2' },
-        { label: '不打孔孔', value: '3' }
-      ],
-      textureContentList: [
-        { label: 'BOPA', value: '1' },
-        { label: 'CPP', value: '2' },
-        { label: 'PET', value: '3' },
-        { label: 'PE', value: '4' },
-        { label: 'KBOPA', value: '5' },
-        { label: 'VMCPP', value: '6' },
-        { label: 'AL', value: '7' },
-        { label: 'HDPE', value: '8' },
-        { label: '绵纸', value: '9' },
-        { label: 'LLDPE', value: '10' },
-        { label: 'VMPET', value: '11' },
-        { label: 'LDPE', value: '12' },
-        { label: 'KPET', value: '13' }
-      ]
     }
   },
   components: {
@@ -558,16 +380,6 @@ export default {
     },
     // 汇总显示
     addToCar () {
-      // 配置校验
-      // 材质第一项必填，其他三项不必填可以选择无，当只选第一项，其他三项为空或者无时，只能选PE或者PE结尾的选项
-      if (!this.data.prop6.type) {
-        return this.$Message('材质第一项为必填')
-      } else if (!this.data.prop7.type && !this.data.prop8.type && !this.data.prop9.type) {
-        let pePro = ['4', '8', '10', '12']
-        if (pePro.indexOf(this.data.prop6.type) < 0) {
-          return this.$Message('材质只选一项时，只能选PE或者PE结尾材质')
-        }
-      }
       this.$router.push({path: '/addToCar'});
     }
   },
@@ -583,7 +395,7 @@ export default {
     color: #000;
   }
   .upLoadBox-title {
-    padding: 15px 0;
+    padding: 15px 0 18px;
   }
   .uploadBox-content {
     padding: 0 12px;
@@ -673,140 +485,14 @@ export default {
           border-left: 1px solid;
         }
       }
-
-      .selectType {
-        text-align: center;
-        margin: 64px 0;
-        p {
-          display: inline-block;
-          width: 150px;
-          line-height: 54px;
-          border: 1px solid #c8c8c8;
-          text-align: center;
-          margin: 0 12px;
-          cursor: pointer;
-
-          &.selected {
-            background-color: #a0a0a0;
-            color: white;
-          }
-        }
-      }
-
-      .rightPartContent {
-        padding: 0 32px;
-        margin-bottom: 16px;
-
-        .rightPartTitle {
-          background-color: #a0a0a0;
-          padding: 13px 20px;
-          color: white;
-        }
-
-        .sizeImport {
-          margin: 56px 0 56px 40px;
-          .labelName {
-            color: #B2B2B2;
-          }
-
-          label {
-            margin-right: 12px;
-          }
-
-          .circular {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            line-height: 24px;
-            text-align: center;
-            border-radius: 100px;
-            border: 1px solid #B2B2B2;
-            color: #B2B2B2;
-            margin: 0 5px;
-          }
-
-          input {
-            border: none;
-            background-color: #F1F1F1;
-            color: #989595;
-            padding: 12px 12px;
-            width: 80px;
-          }
-        }
-
-        .importCard {
-          margin-top: 36px;
-          .importCardTitle {
-            cursor: pointer;
-            border-bottom: 1px solid #585858;
-            font-size: 24px;
-            padding: 0 40px 16px;
-
-            .arrow {
-              float: right;
-              display: inline-block;
-              width: 16px;
-              height: 16px;
-              margin-top: 12px;
-              border-right: 3px solid;
-              border-bottom: 3px solid;
-              transform: rotate(-45deg);
-              transition: all .5s;
-            }
-          }
-
-          .importCardContent {
-            padding: 26px 40px;
-            .row {
-              margin: 16px 0;
-
-              .rowItem {
-                display: inline-block;
-                width: 50%;
-
-                input {
-                  border: none;
-                  width: 150px;
-                  margin-left: 50px;
-                  border-bottom: 1px solid;
-                }
-              }
-            }
-          }
-
-          &.active {
-            .arrow {
-              transform: rotate(45deg);
-            }
-          }
-        }
-      }
     }
   }
-
-  // .selectBox {
-  //   display: flex;
-  //   flex-wrap: wrap;
-  //   flex-direction: row;
-  //   .selectOtion {
-  //     cursor: pointer;
-  //     background-color: #E5E5E5;
-  //     margin: 0 1% 15px;
-  //     line-height: 65px;
-  //     text-align: center;
-  //     width: 23%;
-  //     &.active {
-  //       background-color: #a0a0a0;
-  //       color: white;
-  //     }
-  //   }
-  // }
 
   .textareaStyle {
     width: 100%;
     background-color: #F1F1F1;
-    color: #A9ABAA;
-    padding: 12px;
+    // color;
+    padding: 15px;
     border: none;
   }
 
@@ -838,8 +524,8 @@ export default {
       width: 56px;
       height: 56px;
       border-radius: 60px;
-      font-size: 50px;
-      line-height: 48px;
+      font-size: 48px;
+      line-height: 46px;
       text-align: center;
       border: 2px dashed #d8d8d8;
     }

@@ -20,30 +20,33 @@
     <div class="rightPart">
       <div class="infoBox">
         <div class="persen50Content">
-          <p>备注名</p>
-          <p>XXX</p>
-        </div>
-        <div class="persen25Content">
-          <p>尺寸</p>
-          <p>长-30CM</p>
-          <p>宽-30CM</p>
-          <p>高-30CM</p>
-        </div>
-        <div class="persen50ContentWithWrap">
-          <p>材质</p>   <p>厚度</p>
-          <p>BOPA</p><p>30CM</p>
-          <p>KBOPA</p><p>30CM</p>
-          <p>CPP</p><p>30CM</p>
-          <p>LDPE</p><p>30CM</p>
+          <p>打孔样式</p>
+          <p>飞机孔</p>
         </div>
         <div class="persen50Content">
-          <p>属性</p>
-          <p>洗铝</p>
+          <p>使用环境</p>
+          <p>冷冻</p>
         </div>
         <div class="persen50Content">
-          <p>性能</p>
+          <p>罐装条件</p>
           <p>抽真空</p>
         </div>
+        <div class="persen50Content">
+          <p>阻隔性需求</p>
+          <p>极高（2年内）</p>
+        </div>
+        <div class="persen50ContentWithWrap">
+          <div>内容物属性</div>
+          <p>液态</p><p>油</p>
+        </div>
+        <div class="persen50ContentWithWrap">
+          <!-- <p>阻隔性需求</p><p>极高（2年内）</p> -->
+          <p>材质偏好</p><p>塑塑复合</p>
+        </div>
+        <div class="persen50ContentWithWrap">
+          <p>备注</p><p>i'm remark</p>
+        </div>
+        
       </div>
       <div class="editBox">
         <p style="display: inline-block; cursor: pointer;">
@@ -144,8 +147,6 @@ export default {
     border-bottom: 1px solid;
   }
 
-  .editBox {}
-
   .persen50Content {
     display: flex;
     margin-bottom: 38px;
@@ -158,9 +159,21 @@ export default {
     display: none;
     width: 100%;
     flex-wrap: wrap;
-    margin-bottom: 38px;
+    margin-bottom: 18px;
+    border-top: 1px solid;
     border-bottom: 1px solid;
-    p, div {
+    padding-top: 18px;
+    & + .persen50ContentWithWrap {
+      border-top-width: 0;
+    }
+    &:last-child {
+      border-bottom-width: 0;
+    }
+    div {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    p {
       margin-bottom: 30px;
       width: 50%;
 
@@ -173,7 +186,7 @@ export default {
     display: flex;
     margin-bottom: 38px;
 
-    p, div {
+    p {
       flex: 1;
     }
   }
@@ -201,15 +214,11 @@ export default {
   }
 
   .persen50Content, persen25Content {
-    display: block !important;
-    border-bottom: 1px solid;
-
-    p {
-      margin-bottom: 30px;
-    }
+    // display: block !important;
+    // border-bottom: 1px solid;
 
     &:last-child {
-      border-bottom: 0 solid;
+      border-bottom: 1 solid #000;
     }
   }
 

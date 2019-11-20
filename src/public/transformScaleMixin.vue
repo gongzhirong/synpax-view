@@ -18,7 +18,9 @@ export default {
   },
   mounted () {
     if (this.transformScale) return
-    this.resetScreenSzie()
+    setTimeout(_ => {
+      this.resetScreenSzie()
+    }, 100)
   }
 }
 </script>
