@@ -22,13 +22,13 @@
               <p class="home_text">通过简单的操作选出最适合你的包装产品</p>
               <div class="tabber_content">
                   <div class="tabber_goods" @click="selectType">
-                      <img src="../assets/images/home/tabber_1.jpg" class="tabber_img">
+                      <img src="../assets/images/home/tabber_1.png" class="tabber_img">
                   </div>
                   <div class="tabber_goods" @click="selectType">
-                      <img src="../assets/images/home/tabber_2.jpg" class="tabber_img">
+                      <img src="../assets/images/home/tabber_2.png" class="tabber_img">
                   </div>
                   <div class="tabber_goods" @click="selectType">
-                      <img src="../assets/images/home/tabber_3.jpg" class="tabber_img">
+                      <img src="../assets/images/home/tabber_3.png" class="tabber_img">
                   </div>
                   <div class="tabber_goods" @click="selectType">
                       <img src="../assets/images/home/tabber_4.png" class="tabber_img">
@@ -85,7 +85,7 @@
                           <img src="../assets/img/type_3_2.png" class="type_img">
                       </div>
                       <div class="type_3_4">
-                          <img src="../assets/img/type_9.jpg" class="type_img wh100">
+                          <img src="../assets/img/type_9.png" class="type_img wh100">
                       </div>
                   </div>
               </div>
@@ -251,15 +251,15 @@ export default {
       margin: 50px auto 100px;
   }
   .tabber_goods {
-      width: 600px;
-      height: 253px;
+      width: 295px;
+    //   height: 253px;
       background-color: #fff;
       display: inline-block;
       margin: 0 10px 10px 0;
   }
-  .tabber_goods:nth-child(2) {
-      margin-right: 0;
-  }
+//   .tabber_goods:nth-child(2) {
+//       margin-right: 0;
+//   }
   .tabber_goods:last-child {
       margin-right: 0;
   }
@@ -299,6 +299,8 @@ export default {
         -webkit-transition: transform 0.2s linear;
         -o-transition: transform 0.2s linear;
         transition: transform 0.2s linear;
+        width: 100%;
+        height: 100%;
     }
 
     .wh100 {
@@ -307,10 +309,10 @@ export default {
     }
 
     .type_1_1:hover .type_img,.type_1_3:hover .type_img, .type_2_1:hover .type_img, .type_2_3:hover .type_img,.type_2_5:hover .type_img, .type_3_2:hover .type_img, .type_3_3:hover .type_img {
-        -moz-transform: scale(1.2);
-        -webkit-transform: scale(1.2);
-        -o-transform: scale(1.2);
-        transform: scale(1.2);
+        // -moz-transform: scale(1.0);
+        // -webkit-transform: scale(1.0);
+        // -o-transform: scale(1.0);
+        // transform: scale(1.0);
     }
 
     .detai_type_1 {
@@ -325,7 +327,7 @@ export default {
         height: 797px;
         margin-bottom: 10px;
         position: relative;
-        background-color: #fff;
+        // background-color: #fff;
     }
 
     .type_1_2 {
@@ -372,7 +374,7 @@ export default {
         height: 402px;
         margin-bottom: 10px;
         position: relative;
-        background-color: #fff;
+        // background-color: #fff;
     }
 
     .type_2_2 {
@@ -461,7 +463,7 @@ export default {
 
     .type_3_1 {
         width: 460px;
-        height: 331px;
+        height: 402px;
         margin-bottom: 10px;
         position: relative;
         background-color: #0b0506;
@@ -470,7 +472,7 @@ export default {
 
     .type_3_2 {
         width: 460px;
-        height: 797px;
+        height: 726px;
         margin-bottom: 10px;
         position: relative;
         background-color: #fff;
@@ -496,7 +498,7 @@ export default {
         height: 393px;
         margin-bottom: 10px;
         position: relative;
-        background-color: #fff;
+        // background-color: #fff;
         z-index: 1;
     }
 

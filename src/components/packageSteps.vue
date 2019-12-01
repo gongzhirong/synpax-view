@@ -2,7 +2,10 @@
   <div class="packageSet">
     <div class="header">
       <ul class="stepsBox">
-        <li v-for="(name, type, index) in stepList" :class="{active: setSteps(type)}" :key="type">{{`${++index}.${name}`}}</li>
+        <li v-for="(name, type, index) in stepList" :class="{active: setSteps(type)}" :key="type">
+          <span class="backHome" v-if="name==='返回首页'" @click="backHome">{{`${name}`}}<img src="../assets/img/backhome.png"></span>
+          <span v-else>{{`${++index}.${name}`}}</span>
+        </li>
       </ul>
     </div>
   </div>
@@ -18,7 +21,8 @@ export default {
         configureBags: '配置袋子',
         configureMembrane: '配置膜',
         addToCar: '加入购物车',
-        finish: '完成包装配置'
+        finish: '完成包装配置',
+        backHome: '返回首页',
       }
     }
   },
@@ -31,6 +35,9 @@ export default {
       // console.log(name)
     },
   methods: {
+    backHome() {
+      this.$router.push({path: '/home'});
+    },
     setSteps (type) {
       if (this.packageSetSteps === type) {
         return true
@@ -75,6 +82,17 @@ export default {
           }
         }
       }
+      li:last-child {
+          cursor: pointer;
+          float: right;
+          .backHome {
+            display: flex;
+            align-items: center;
+            img {
+              margin-left: 5px;
+            }
+          }
+        }
     }
   }
 </style>

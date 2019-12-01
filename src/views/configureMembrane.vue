@@ -48,7 +48,7 @@
               </div>
               <div class="importCardContent" v-show="importCardTitleOne">
                 <div class="selectBox">
-                  <span v-for="option in attributeList" class="selectOtion" :class="{active: data.prop1 === option.value}" @click="data.prop1 = option.value">{{option.label}}</span>
+                  <!-- <span v-for="option in attributeList" class="selectOtion" :class="{active: data.prop1 === option.value}" @click="data.prop1 = option.value">{{option.label}}</span> -->
                 </div>
               </div>
             </div>
@@ -60,7 +60,7 @@
               </div>
               <div class="importCardContent" v-show="importCardTitleTwo">
                 <div class="selectBox">
-                  <span v-for="option in performanceList" class="selectOtion" :class="{active: data.prop2 === option.value}" @click="data.prop2 = option.value">{{option.label}}</span>
+                  <!-- <span v-for="option in performanceList" class="selectOtion" :class="{active: data.prop2 === option.value}" @click="data.prop2 = option.value">{{option.label}}</span> -->
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@
               </div>
               <div class="importCardContent" v-show="importCardTitleThree">
                 <div class="selectBox">
-                  <span v-for="option in materialList" class="selectOtion" :class="{active: data.prop3 === option.value}" @click="data.prop3 = option.value">{{option.label}}</span>
+                  <!-- <span v-for="option in materialList" class="selectOtion" :class="{active: data.prop3 === option.value}" @click="data.prop3 = option.value">{{option.label}}</span> -->
                 </div>
               </div>
             </div>
@@ -123,7 +123,7 @@
 <script>
 import PackageSteps from '../components/packageSteps.vue'
 import SelectComponent from '../components/selectComponent.vue'
-import Option from '../components/Option.vue'
+import Option from '../components/option.vue'
 export default {
   name: 'configureMembrane',
   data () {

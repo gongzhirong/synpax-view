@@ -247,7 +247,7 @@
 <script>
 import PackageSteps from '../components/packageSteps.vue'
 import SelectComponent from '../components/selectComponent.vue'
-import Option from '../components/Option.vue'
+import Option from '../components/option.vue'
 import Collapse from '../components/Collapse.vue'
 import ButtonRadio from '../components/ButtonRadio'
 export default {
