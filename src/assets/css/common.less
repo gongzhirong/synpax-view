@@ -36,6 +36,13 @@ html{
 body{
 	width:100%;
 }
+*::-webkit-scrollbar {
+	height: 0;
+	width: 0;
+}
+#app {
+	padding-top: 45px;
+}
 .wrap{
 	width: 1920px;
 	margin: 0 auto;
@@ -44,28 +51,15 @@ body{
 }
 .pack_top{
 	width: 100%;
-	height: 180px;
 	background-color: #fff;
-	position: relative;
-}
-.top_logo{
-	width: 1640px;
-	height: 180px;
-	margin: 0 auto;
-	overflow: hidden;
-}
-.logo_line{
-	width: 620px;
-	height: 1px;
-	margin-top: 178px;
-	background-color: #aaa;
-	float: left;
+	position: fixed;
+	top: 0;
+	z-index: 99999;
 }
 .logo_img{
-	width: 177px;
-	height: 37px;
-	margin: 142px 111px 0;
+	height: 50px;
 	float: left;
+	margin: 20px 50px;
 }
 .tab_wrap{
 	width: 100%;

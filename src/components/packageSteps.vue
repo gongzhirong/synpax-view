@@ -3,7 +3,9 @@
     <div class="header">
       <ul class="stepsBox">
         <li v-for="(name, type, index) in stepList" :class="{active: setSteps(type)}" :key="type">
-          <span class="backHome" v-if="name==='返回首页'" @click="backHome">{{`${name}`}}<img src="../assets/img/backhome.png"></span>
+          <span class="backHome" v-if="name===''" @click="backHome">
+            <span>{{`${name}`}}</span>
+            <img src="../assets/img/backhome.png"></span>
           <span v-else>{{`${++index}.${name}`}}</span>
         </li>
       </ul>
@@ -50,7 +52,7 @@ export default {
 </script>
 <style lang="less">
   .packageSet {
-    margin-top: 100px;
+    margin-top: 42px;
     padding-top: 80px;
     background-color: #EEEEEE;
     font-size: 20px;
@@ -86,10 +88,10 @@ export default {
           cursor: pointer;
           float: right;
           .backHome {
-            display: flex;
-            align-items: center;
+            display: inline-block;
             img {
-              margin-left: 5px;
+              vertical-align: middle;
+              margin-left: 12px;
             }
           }
         }

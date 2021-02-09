@@ -20,8 +20,7 @@ export default new Vuex.Store({
   },
   actions: {
     resetScreenSzie({ commit }) {
-      console.log(document.getElementById('app').clientWidth)
-      let size = document.body.clientWidth / 1920;
+      let size = document.body.clientWidth / 1921;
       commit('screenSzie', size);
     },
     changeSteps ({commit}, value) {

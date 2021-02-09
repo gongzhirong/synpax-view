@@ -35,7 +35,7 @@
                   </div>
               </div>
           </div>
-          <div class="home_detail">
+          <div class="home_detail" id="home_detail">
               <div class="home_title">
                   <div class="title_line"></div>
                   <div class="title_text">包装设计展示</div>
