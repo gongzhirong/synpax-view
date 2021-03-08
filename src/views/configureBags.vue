@@ -245,11 +245,11 @@
   </div>
 </template>
 <script>
-import PackageSteps from '../components/packageSteps.vue'
-import SelectComponent from '../components/selectComponent.vue'
-import Option from '../components/option.vue'
+import PackageSteps from '../components/PackageSteps.vue'
+import SelectComponent from '../components/SelectComponent.vue'
+import Option from '../components/Option.vue'
 import Collapse from '../components/Collapse.vue'
-import ButtonRadio from '../components/ButtonRadio'
+import ButtonRadio from '../components/ButtonRadio.vue'
 export default {
   name: 'configureBags',
   data () {

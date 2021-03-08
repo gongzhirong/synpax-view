@@ -41,8 +41,8 @@
   </div>
 </template>
 <script>
-import PackageSteps from '../components/packageSteps.vue'
-import AddCarItem from '../components/addCarItem.vue'
+import PackageSteps from '../components/PackageSteps.vue'
+import AddCarItem from '../components/AddCarItem.vue'
 export default {
   data () {
     return {}

@@ -53,7 +53,7 @@
   </div>
 </template>
 <script>
-import PackageSteps from '../components/packageSteps.vue'
+import PackageSteps from '../components/PackageSteps.vue'
 export default {
   data () {
     return {}

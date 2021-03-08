@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     selected () {
-      this.$parent.$emit('selected', {value: this.value, label: this.label})
+      this.$parent.selected({value: this.value, label: this.label})
     }
   }
 }

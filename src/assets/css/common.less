@@ -41,25 +41,13 @@ body{
 	width: 0;
 }
 #app {
-	padding-top: 45px;
+	// padding-top: 50px;
 }
 .wrap{
 	width: 1920px;
 	margin: 0 auto;
 	// background-color: #ececec;
 	transform-origin: left top;
-}
-.pack_top{
-	width: 100%;
-	background-color: #fff;
-	position: fixed;
-	top: 0;
-	z-index: 99999;
-}
-.logo_img{
-	height: 50px;
-	float: left;
-	margin: 20px 50px;
 }
 .tab_wrap{
 	width: 100%;
@@ -148,3 +136,15 @@ body{
 	border-radius: 50%;
 	cursor: pointer;
 }
+
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+

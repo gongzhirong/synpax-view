@@ -13,12 +13,8 @@
  */
 export default {
   name: 'ButtonRadio',
-  model: {
-    prop: 'value',
-    event: 'change',
-  },
   props: {
-    value: {
+    modelValue: {
       type: [String],
       default: null,
     },
@@ -36,7 +32,7 @@ export default {
     }
   },
   watch: {
-    value (value) {
+    modelValue (value) {
       this.setActived(value)
     }
   },
@@ -74,18 +70,14 @@ export default {
         this.$refs.option.appendChild(temp)
       }
     },
-    seleted (data) {
-      this.$emit('change', data.value)
+    selected (data) {
+      this.$emit('update:modelValue', data.value)
     }
   },
   mounted () {
     // 初始化默认值选中
     this.setActived(this.value)
     this.setWdith()
-  },
-  created () {
-    // 监听option子组件时间触发选中操作
-    this.$on('selected', this.seleted)
   }
 }
 </script>
