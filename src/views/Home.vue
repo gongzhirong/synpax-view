@@ -16,10 +16,10 @@
           <div class="home_tabber">
               <div class="home_title">
                   <div class="title_line"></div>
-                  <div class="title_text">开始我的包装</div>
+                  <div class="title_text">{{ $t('开始我的包装') }}</div>
                   <div class="title_line"></div>
               </div>
-              <p class="home_text">通过简单的操作选出最适合你的包装产品</p>
+              <p class="home_text">{{ $t('通过简单的操作选出最适合你的包装产品') }}</p>
               <div class="tabber_content">
                   <div class="tabber_goods" @click="selectType">
                       <img src="../assets/images/home/tabber_1.png" class="tabber_img">
@@ -38,7 +38,7 @@
           <div class="home_detail" id="home_detail">
               <div class="home_title">
                   <div class="title_line"></div>
-                  <div class="title_text">包装设计展示</div>
+                  <div class="title_text">{{ $t('包装设计展示') }}</div>
                   <div class="title_line"></div>
               </div>
               <p class="home_text">FAILURE IS PROBABLY THE FORTIFICATION IN YOUR POLE. IT IS LIKE A PEEK YOUR WALLET AS
@@ -60,8 +60,6 @@
                           <img src="../assets/img/type_2_1.png" class="type_img">
                       </div>
                       <div class="type_2_2">
-                          <!--<div class="type_2_2_left"></div>-->
-                          <!--<div class="type_2_2_right"></div>-->
                           <img src="../assets/img/type_6.jpg" class="type_img wh100">
                       </div>
                       <div class="type_2_3">
@@ -98,38 +96,40 @@
       <div class="pack_footer">
           <div class="footer_contact">
               <div class="contact_wrap contact_name">
-                  <p class="contact_left">您的姓名</p>
+                  <p class="contact_left">{{ $t('您的姓名') }}</p>
                   <input type="text" class="contact_right">
               </div>
               <div class="contact_wrap contact_tel">
-                  <p class="contact_left">联系电话</p>
+                  <p class="contact_left">{{ $t('联系电话') }}</p>
                   <input type="text" class="contact_right">
               </div>
               <div class="contact_wrap contact_txt">
-                  <p class="contact_left">留言</p>
+                  <p class="contact_left">{{ $t('留言') }}</p>
                   <textarea cols="30" rows="10" class="contact_right contact_textarea"></textarea>
               </div>
-              <button class="sendBtn">发送</button>
+              <button class="sendBtn">{{ $t('发送') }}</button>
           </div>
-          <div class="footer_arrow" @click="scrollToTop"></div>
       </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { useRouter } from 'vue-router';
 export default {
   name: 'home',
-  methods: {
-    scrollToTop () {
-      window.scrollTo(0, 0)
-    },
-    selectType () {
-        this.$router.push({path: '/selectType'});
-    }
+  setup() {
+      const router = useRouter() // 获取路由实例
+
+      function selectType(): void {
+        router.push({path: '/selectType'})
+      }
+      return {
+          selectType
+      }
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .home {
     background-color: #ececec;
   .home_banner {

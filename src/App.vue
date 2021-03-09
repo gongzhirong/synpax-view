@@ -8,30 +8,29 @@
             <a @click="navScrollFn('home_banner')">{{ $t('首页') }}</a>
           </li>
           <li>
-            <a @click="navScrollFn('home_tabber')">包装定制</a>
+            <a @click="navScrollFn('home_tabber')">{{ $t('包装定制')}}</a>
           </li>
           <li>
-            <a @click="navScrollFn('home_detail')">产品案例</a>
+            <a @click="navScrollFn('home_detail')">{{ $t('产品案例')}}</a>
           </li>
           <li>
-            <a @click="navScrollFn('home_about')">关于我们</a>
+            <a @click="navScrollFn('home_about')">{{ $t('关于我们')}}</a>
           </li>
         </nav>
         <nav class="login_language_box el-dropdown-link">
           <li>
             <el-dropdown @command="changeLang">
               <span class="el-dropdown-link">
-                语言<i class="el-icon-arrow-down el-icon--right"></i>
+                {{ $t('语言') }}<i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item command="zh-cn">中文</el-dropdown-item>
-                  <el-dropdown-item command="en-us">英文</el-dropdown-item>
+                  <el-dropdown-item command="zh-cn">{{ $t('中文')}}</el-dropdown-item>
+                  <el-dropdown-item command="en-us">{{ $t('英文') }}</el-dropdown-item>
                 </el-dropdown-menu>
               </template>
             </el-dropdown>
-            <span> / </span>
-            <a class="el-dropdown-link">登录</a>
+            <a class="el-dropdown-link">{{ $t('登录') }}</a>
           </li>
         </nav>
       </div>
@@ -43,9 +42,8 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import './assets/css/common.less'
-  import { useStore } from 'vuex'
   import transformScaleHook from './utils/transformScaleHook'
   import {
     getCurrentInstance,
@@ -53,26 +51,47 @@
     onUnmounted,
     ref
   } from 'vue'
+  import {
+    useRoute,
+    useRouter
+  } from 'vue-router'
   export default {
     name: 'App',
     setup() {
-      const currentInstance = getCurrentInstance();
-      const isFixed = ref(false);
-      const {transformScale, bodyHeight} = transformScaleHook();
+      const currentInstance: any = getCurrentInstance() // 获取当前组件实例
+      const isFixed = ref(false) // 导航定位开关
+      const {
+        transformScale,
+        bodyHeight
+      } = transformScaleHook() // 缩放比例，比例计算后的高度
+      const currentRoute = useRoute() // 获取当前路由信息
+      const router = useRouter() // 获取路由实例
 
-      function navScrollFn(className) {
-        const scrollValue = document.getElementsByClassName(className)[0]?.offsetTop || 0
-        document.documentElement.scrollTop = `${(scrollValue * transformScale.value) - 100}`
+      // 非home首页要回到首页后再跳转
+      function navScrollFn(className: string) {
+        if (currentRoute.name !== 'home') {
+          router.push({
+            name: 'home'
+          })
+        }
+        // 保证需要跳转页面的情况下，在跳转后再执行位置追踪
+        setTimeout(() => {
+          const tag = document.getElementsByClassName(className)[0] as HTMLElement
+          const scrollValue = tag?.offsetTop || 0
+          document.documentElement.scrollTop = +`${(scrollValue * transformScale.value) - 100}`
+        }, 0)
       }
 
       // 切换语言
-      function changeLang(lang) {
+      function changeLang(lang: string) {
+        // 记录已修改的语言模式
         window.localStorage.setItem('lang', lang)
-        currentInstance.proxy.$i18n.locale = lang
+        // 修改 APP 当前语言
+        currentInstance.ctx.$i18n.locale = lang
       }
 
       function isFixedComputed() {
-        const t = document.getElementsByTagName('html')[0].scrollTop;
+        const t = document.getElementsByTagName('html')[0].scrollTop
         if (t >= 100) {
           isFixed.value = true
         } else {
@@ -97,16 +116,17 @@
   }
 </script>
 <style lang="less" scoped>
-  .pack_top{
+  .pack_top {
     height: 100px;
     background-color: #fff;
   }
-  
-  .logo_img{
+
+  .logo_img {
     height: 40px;
     float: left;
     margin: 30px 50px;
   }
+
   .scroll_pack_top {
     box-shadow: 0px -6px 20px 0px #0b0507;
     animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
@@ -127,11 +147,13 @@
       font-size: 15px;
     }
   }
+
   .header_nav {
     display: flex;
     justify-content: flex-end;
     padding: 0 18px;
   }
+
   nav {
     width: 640px;
     text-align: right;
@@ -155,8 +177,9 @@
       }
     }
   }
+
   .login_language_box {
-    width: 200px;
+    width: 220px;
     text-align: right;
   }
 
@@ -164,7 +187,9 @@
     font-size: 15px;
     cursor: pointer;
     color: #409EFF;
+    margin: 0 10px;
   }
+
   .el-icon-arrow-down {
     font-size: 15px;
   }
