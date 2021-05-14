@@ -15,8 +15,10 @@ export default {
   name: 'ButtonRadio',
   props: {
     modelValue: {
-      type: [String],
-      default: null,
+      type: Array,
+      default () {
+        return []
+      },
     },
     row: {
       type: [String, Number],
@@ -39,10 +41,11 @@ export default {
   methods: {
     // 设置option选中高亮
     setActived (value) {
+      const currentData = JSON.parse(JSON.stringify(value))
       let optionList = this.$refs.option.children
       for (let i = 0; i < optionList.length; i++) {
         let dom = optionList[i]
-        if (dom.getAttribute('data-value') === value) {
+        if (currentData.includes(dom.getAttribute('data-value'))) {
           dom.classList.add('active')
         } else {
           dom.classList.remove('active')
@@ -71,12 +74,22 @@ export default {
       }
     },
     selected (data) {
-      this.$emit('update:modelValue', data.value)
+      const result = JSON.parse(JSON.stringify(this.modelValue))
+      if (result.indexOf(data.value) > -1) {
+        result.splice(result.indexOf(data.value), 1)
+      } else {
+        if (this.$refs.option.querySelector('li.active')) {
+          let index = result.indexOf(this.$refs.option.querySelector('li.active').getAttribute('data-value'))
+          result.splice(index, 1)
+        }
+        result.push(data.value)
+      }
+      this.$emit('update:modelValue', result)
     }
   },
   mounted () {
     // 初始化默认值选中
-    this.setActived(this.value)
+    this.setActived(this.modelValue)
     this.setWdith()
   }
 }
