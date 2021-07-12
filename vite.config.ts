@@ -10,5 +10,14 @@ export default defineConfig({
     vueI18n({
       include: path.resolve(__dirname, './src/lang/modules/**')
     })
-  ]
+  ],
+  server: {
+    proxy: {
+      // 选项写法
+      '/tc': {
+        target: 'http://119.29.151.52:8080',
+        changeOrigin: true
+      }
+    }
+  }
 })

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { setI18nLanguage, loadLocaleMessages, SUPPORT_LOCALES } from './lang'
 
 import type { Router, RouteRecordRaw } from 'vue-router'
@@ -13,15 +13,11 @@ export function setupRouter(i18n: I18n): Router {
   // setup routes
   const routes: RouteRecordRaw[] = [
     { path: '/:locale/' , name: 'home', component: () => import('./views/Home/index.vue')},
-    // { path: '/:locale/selectType', name: 'selectType', component: () => import('./views/selectType.vue') },
-    // { path: '/:locale/finish', name: 'finish', component: () => import('./views/finish.vue') },
-    // { path: '/:locale/selectBag', name: 'selectBag', component: () => import('./views/selectBag.vue') },
-    // { path: '/:locale/configureBags', name: 'configureBags', component: () => import('./views/configureBags.vue') },
-    // { path: '/:locale/configureMembrane', name: 'configureMembrane', component: () => import('./views/configureMembrane.vue') },
-    // { path: '/:locale/addToCar', name: 'addToCar', component: () => import('./views/addToCar.vue') },
     { path: '/:locale/personalCenter', name: 'personalCenter', component: () => import('./views/PersonalCenter/index.vue') },
     { path: '/:locale/packagingInitial/:packageId', name: 'packagingInitial', component: () => import('./views/PackagingInitial/index.vue') },
-    { path: '/:locale/ConfigurePackage', name: 'ConfigurePackage', component: () => import('./views/ConfigurePackage/index.vue') },
+    { path: '/:locale/configurePackage', name: 'ConfigurePackage', component: () => import('./views/ConfigurePackage/index.vue') },
+    { path: '/:locale/configureSuccess', name: 'ConfigureSuccess', component: () => import('./views/ConfigureSuccess/index.vue') },
+    { path: '/:locale/productPreview/:productId', name: 'ProductPreview', component: () => import('./views/ProductPreview/index.vue') },
     {
       path: '/:pathMatch(.*)*',
       redirect: () => `/${locale}`
@@ -30,7 +26,7 @@ export function setupRouter(i18n: I18n): Router {
 
   // create router instance
   const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     scrollBehavior () {
       return { top: 0 }
     },

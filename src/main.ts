@@ -7,6 +7,7 @@ import { setupI18n } from './lang'
 import en from './lang/modules/en'
 import './index.css'
 import 'element-plus/lib/theme-chalk/index.css'
+import SetDefaultImg from './plugins/setDefaultImg'
 
 const i18n = setupI18n({
     legacy: true,
@@ -26,4 +27,5 @@ app.use(ElementPlus, {
     i18n: i18n.global.t
 })
 app.use(store)
+app.use(SetDefaultImg)
 app.mount('#app')

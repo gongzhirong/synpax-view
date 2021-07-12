@@ -1,0 +1,12 @@
+img {
+  object-fit: cover;
+}
+
+/* 图片鼠标停留放大功能 */
+.imgHoverBigger {
+  transition: transform .3s;
+}
+.imgHoverBigger:hover {
+  transform: scale(1.5);
+}
+

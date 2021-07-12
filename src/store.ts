@@ -1,13 +1,17 @@
 import { createStore } from 'vuex'
 import {
   login,
-  getUserinfo
+  getUserinfo,
+  getUnreadNum
 } from './api'
 
 const store = createStore({
   state: {
     isLogin: false,
-    userInfo: {},
+    userInfo: {
+      token: ''
+    },
+    unreadMessageNum: 0,
     transformScale: null,
     bodyHeight: 500,
     packageSetSteps: '' // 包装配置功能块步骤点
@@ -24,6 +28,9 @@ const store = createStore({
       state.isLogin = true;
       state.userInfo = user;
       window.localStorage.setItem('token', user.token)
+    },
+    setUnreadMessageNum (state, num) {
+      state.unreadMessageNum = num
     }
   },
   actions: {
@@ -38,7 +45,7 @@ const store = createStore({
     },
 
     // 登录
-    async login ({ commit }) {
+    async login ({ commit, dispatch }) {
       try {
         const data = {
           data: '283203806@qq.com',
@@ -48,11 +55,13 @@ const store = createStore({
         const res = await login({ data })
         if (res.data.code === 0) {
           commit('loginSuccess', res.data.result)
+          dispatch('getUnreadNum')
         }
       } catch(e) {}
     },
+
     // 检查本地缓存 token，并检查是否有效
-    async checkLogin ({ commit }) {
+    async checkLogin ({ commit, dispatch }) {
       const token = window.localStorage.getItem('token')
       if (!token) {
         return
@@ -61,13 +70,31 @@ const store = createStore({
         const params = {
           token
         }
-        console.log(params)
         const res = await getUserinfo({ params })
         if (res.data.code === 0) {
           res.data.result.token = token
           commit('loginSuccess', res.data.result)
+          dispatch('getUnreadNum')
         }
       } catch(e) {}
+    },
+
+    // 获取未读消息数量
+    async getUnreadNum({ commit, state }) {
+      try {
+        const params = {
+          token: state.userInfo?.token
+        }
+        const res = await getUnreadNum({ params })
+        if (res.data.code === 0) {
+          commit('setUnreadMessageNum', res.data.result || 0)
+        }
+      } catch(e) {}
+    },
+
+    // 阅读一个消息
+    readOneMessage({ dispatch }) {
+      dispatch('getUnreadNum')
     }
   }
 })

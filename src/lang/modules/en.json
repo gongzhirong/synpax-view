@@ -1,0 +1,175 @@
+{
+  "首页": "Home",
+  "包装定制": "Customized",
+  "产品案例": "Case",
+  "关于我们": "About",
+  "语言": "Languages",
+  "中文": "CN",
+  "英文": "EN",
+  "登录": "Login",
+  "开始我的包装": "Start Packaging",
+  "即包装配置器": "Packaging Configurator",
+  "包装设计展示": "Design",
+  "您的姓名": "Your name",
+  "联系电话": "Contact Number",
+  "留言": "Leaving a message",
+  "发送": "Send",
+  "消息": "Message",
+  "账号": "Account",
+  "个人中心": "User Center",
+  "手机号码": "Phone",
+  "邮箱地址": "E-mail",
+  "状态": "Status",
+  "订单标题": "Order Title",
+  "创建时间": "Create Time",
+  "关键词": "Key Word",
+  "搜索": "Eearch",
+  "发送时间": "Sending Time",
+  "主题": "Theme",
+  "包装初定": "Initial Packaging",
+  "查找": "Lookup",
+  "发送留言成功！": "Message sent successfully ！",
+  "请输入您的姓名": "Please enter your name",
+  "请输入您的联系号码": "Please enter your contact number",
+  "请输入您的留言": "Please enter your message",
+  "袋形描述": "Bag Description",
+  "概览": "Overview",
+  "内容物属性": "Content Property",
+  "上传内容物图片": "Upload content image",
+  "备注": "Remarks",
+  "确认提交，寻求报价": "Confirm submission and seek quotation",
+  "您已完成您的包装": "You have finished your packing",
+  "我们已收到您的包装配置": "We have received your packing configuration",
+  "我们会尽快为您安排供应商进行报价": "We will arrange supplier quotation for you as soon as possible",
+  "浏览器将在X秒后自动返回首页": "The browser will automatically return to the home page in<span style='margin: 0 12px;font-size: 28px;'>{number}</span>seconds",
+  "如无反应，请点这里": "If there is no response, please click here",
+  "已读": "Read",
+  "未读": "Unread",
+  "修改信息": "Modify information",
+  "取消": "Cancel",
+  "保存": "Save",
+  "关闭": "Close",
+  "详情": "Detail",
+  "设计师": "Designer",
+  "标签": "Label",
+  "只能上传一张内容物图片": "Only one content image can be uploaded",
+  "内容物描述": "Content description",
+  "el": {
+    "colorpicker": {
+        "confirm": "OK",
+        "clear": "Clear"
+    },
+    "datepicker": {
+        "now": "Now",
+        "today": "Today",
+        "cancel": "Cancel",
+        "clear": "Clear",
+        "confirm": "OK",
+        "selectDate": "Select date",
+        "selectTime": "Select time",
+        "startDate": "Start Date",
+        "startTime": "Start Time",
+        "endDate": "End Date",
+        "endTime": "End Time",
+        "prevYear": "Previous Year",
+        "nextYear": "Next Year",
+        "prevMonth": "Previous Month",
+        "nextMonth": "Next Month",
+        "year": "",
+        "month1": "January",
+        "month2": "February",
+        "month3": "March",
+        "month4": "April",
+        "month5": "May",
+        "month6": "June",
+        "month7": "July",
+        "month8": "August",
+        "month9": "September",
+        "month10": "October",
+        "month11": "November",
+        "month12": "December",
+        "week": "week",
+        "weeks": {
+            "sun": "Sun",
+            "mon": "Mon",
+            "tue": "Tue",
+            "wed": "Wed",
+            "thu": "Thu",
+            "fri": "Fri",
+            "sat": "Sat"
+        },
+        "months": {
+            "jan": "Jan",
+            "feb": "Feb",
+            "mar": "Mar",
+            "apr": "Apr",
+            "may": "May",
+            "jun": "Jun",
+            "jul": "Jul",
+            "aug": "Aug",
+            "sep": "Sep",
+            "oct": "Oct",
+            "nov": "Nov",
+            "dec": "Dec"
+        }
+    },
+    "select": {
+        "loading": "Loading",
+        "noMatch": "No matching data",
+        "noData": "No data",
+        "placeholder": "Select"
+    },
+    "cascader": {
+        "noMatch": "No matching data",
+        "loading": "Loading",
+        "placeholder": "Select",
+        "noData": "No data"
+    },
+    "pagination": {
+        "goto": "Go to",
+        "pagesize": "/page",
+        "total": "Total {total}",
+        "pageClassifier": ""
+    },
+    "messagebox": {
+        "title": "Message",
+        "confirm": "OK",
+        "cancel": "Cancel",
+        "error": "Illegal input"
+    },
+    "upload": {
+        "deleteTip": "press delete to remove",
+        "delete": "Delete",
+        "preview": "Preview",
+        "continue": "Continue"
+    },
+    "table": {
+        "emptyText": "No Data",
+        "confirmFilter": "Confirm",
+        "resetFilter": "Reset",
+        "clearFilter": "All",
+        "sumText": "Sum"
+    },
+    "tree": {
+        "emptyText": "No Data"
+    },
+    "transfer": {
+        "noMatch": "No matching data",
+        "noData": "No data",
+        "titles": ["List 1", "List 2"],
+        "filterPlaceholder": "Enter keyword",
+        "noCheckedFormat": "{total} items",
+        "hasCheckedFormat": "{checked}/{total} checked"
+    },
+    "image": {
+        "error": "FAILED"
+    },
+    "pageHeader": {
+        "title": "Back"
+    },
+    "popconfirm": {
+        "confirmButtonText": "Yes",
+        "cancelButtonText": "No"
+    }
+  }
+}
